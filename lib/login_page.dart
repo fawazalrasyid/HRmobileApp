@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_app/home_page.dart';
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: LoginPage(),
-  ));
-}
+import 'package:hr_app/dashboard.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -60,7 +53,7 @@ class _LoginPage extends State<LoginPage> {
       ),
     );
     final loginButon = Material(
-      elevation: 3.0,
+      elevation: 2.0,
       borderRadius: BorderRadius.circular(15.0),
       color: Color(0xffFF3030),
       child: MaterialButton(
@@ -69,7 +62,7 @@ class _LoginPage extends State<LoginPage> {
         onPressed: () {
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (_) {
-              return HomePage();
+              return Dashboard();
             }),
           );
         },
@@ -98,6 +91,7 @@ class _LoginPage extends State<LoginPage> {
                     fit: BoxFit.contain,
                   ),
                 ),
+                SizedBox(height: 32.0),
                 Text(
                   "Sign In",
                   textAlign: TextAlign.left,
@@ -106,11 +100,11 @@ class _LoginPage extends State<LoginPage> {
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 15.0),
+                SizedBox(height: 16.0),
                 emailField,
-                SizedBox(height: 25.0),
+                SizedBox(height: 16.0),
                 passwordField,
-                SizedBox(height: 5.0),
+                SizedBox(height: 8.0),
                 CheckboxListTile(
                   title: Text('Remember me'),
                   value: _value1,
@@ -118,10 +112,10 @@ class _LoginPage extends State<LoginPage> {
                   activeColor: Color(0xffFF3030),
                   controlAffinity: ListTileControlAffinity.leading,
                 ),
-                SizedBox(height: 25.0),
+                SizedBox(height: 32.0),
                 loginButon,
                 SizedBox(
-                  height: 15.0,
+                  height: 16.0,
                 ),
                 Center(child: Text("Forgot password?")),
               ],
