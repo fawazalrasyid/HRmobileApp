@@ -84,11 +84,11 @@ class _LoginPage extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(
-                  height: 120,
+                Container(
+                  height: 100.0,
                   child: Image.asset(
                     "assets/roketin.png",
-                    fit: BoxFit.contain,
+                    height: 100.0,
                   ),
                 ),
                 SizedBox(height: 32.0),

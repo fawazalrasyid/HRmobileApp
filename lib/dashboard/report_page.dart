@@ -55,7 +55,6 @@ class _ReportPageState extends State<ReportPage> {
             right: 16.0,
           ),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               SizedBox(height: 32.0),
               Row(

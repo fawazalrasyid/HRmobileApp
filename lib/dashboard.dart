@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:hr_app/pages/account_page.dart';
-import 'package:hr_app/pages/home_page.dart';
-import 'package:hr_app/pages/report_page.dart';
+import 'package:hr_app/dashboard/account_page.dart';
+import 'package:hr_app/dashboard/home_page.dart';
+import 'package:hr_app/dashboard/report_page.dart';
 
 class Dashboard extends StatefulWidget {
   @override

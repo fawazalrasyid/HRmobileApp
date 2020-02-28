@@ -35,7 +35,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon" 
   ios: true
-  image_path: "assets/icon/icon.png"
+  image_path: "assets/icon/ic_roketin.png"
 
 
 # For information on the generic Dart part of this file, see the
@@ -69,6 +69,8 @@ flutter:
   - assets/images/dot.png
   - assets/images/login.png
   - assets/images/logout.png
+  - assets/images/account.png
+  - assets/images/help.png
   #18-6-96
 
 

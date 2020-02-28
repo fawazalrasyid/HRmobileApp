@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:hr_app/pages/absensi_page.dart';
+import 'package:hr_app/pages/cuti_page.dart';
+import 'package:hr_app/pages/izin_page.dart';
+import 'package:hr_app/pages/remote_page.dart';
+import 'package:hr_app/pages/sakit_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -79,7 +84,13 @@ class _HomePage extends State<HomePage> {
                             color: Color(0xffF4F4F4),
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CutiPage()),
+                                );
+                              },
                               child: Center(
                                 child: Column(
                                     mainAxisSize: MainAxisSize.min,
@@ -105,7 +116,13 @@ class _HomePage extends State<HomePage> {
                             color: Color(0xffF4F4F4),
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => IzinPage()),
+                                );
+                              },
                               child: Center(
                                 child: Column(
                                     mainAxisSize: MainAxisSize.min,
@@ -134,7 +151,13 @@ class _HomePage extends State<HomePage> {
                             color: Color(0xffF4F4F4),
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SakitPage()),
+                                );
+                              },
                               child: Center(
                                 child: Column(
                                     mainAxisSize: MainAxisSize.min,
@@ -163,7 +186,13 @@ class _HomePage extends State<HomePage> {
                             color: Color(0xffF4F4F4),
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AbsensiPage()),
+                                );
+                              },
                               child: Center(
                                 child: Column(
                                     mainAxisSize: MainAxisSize.min,
@@ -192,7 +221,13 @@ class _HomePage extends State<HomePage> {
                             color: Color(0xffF4F4F4),
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => RemotePage()),
+                                );
+                              },
                               child: Center(
                                 child: Column(
                                     mainAxisSize: MainAxisSize.min,
