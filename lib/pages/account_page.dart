@@ -50,9 +50,7 @@ class _AccountPageState extends State<AccountPage> {
                     )
                   ],
                 ),
-                SizedBox(
-                  height: 32.0,
-                ),
+                SizedBox(height: 64.0),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

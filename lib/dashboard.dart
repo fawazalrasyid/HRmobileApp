@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:hr_app/pages/account_page.dart';
-import 'package:hr_app/pages/history_page.dart';
 import 'package:hr_app/pages/home_page.dart';
+import 'package:hr_app/pages/report_page.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class _DashboardState extends State<Dashboard> {
   int _selectedIndex = 0;
   final _layoutPage = [
     HomePage(),
-    HistoryPage(),
+    ReportPage(),
     AccountPage(),
   ];
 

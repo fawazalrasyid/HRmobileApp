@@ -7,6 +7,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
+  TextStyle text22bold = TextStyle(
+    fontFamily: 'Montserrat',
+    fontSize: 22.0,
+    fontWeight: FontWeight.bold,
+  );
+
   TextStyle text18bold = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 18.0,
@@ -254,7 +260,7 @@ class _HomePage extends State<HomePage> {
                                   ),
                                   Text(
                                     '10hari',
-                                    style: text18bold,
+                                    style: text22bold,
                                   ),
                                   Text(
                                     'sisa cuti',
@@ -288,7 +294,7 @@ class _HomePage extends State<HomePage> {
                                   ),
                                   Text(
                                     '10hari',
-                                    style: text18bold,
+                                    style: text22bold,
                                   ),
                                   Text(
                                     'sisa cuti',
@@ -322,7 +328,7 @@ class _HomePage extends State<HomePage> {
                                   ),
                                   Text(
                                     '10hari',
-                                    style: text18bold,
+                                    style: text22bold,
                                   ),
                                   Text(
                                     'sisa cuti',
@@ -366,32 +372,74 @@ class _HomePage extends State<HomePage> {
                         physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.vertical,
                         children: <Widget>[
-                          new Container(
-                            height: 36.00,
-                            width: 275.00,
-                            decoration: BoxDecoration(
-                              color: Color(0xfff4f4f4),
-                              borderRadius: BorderRadius.circular(15.00),
+                          Container(
+                            height: 42.00,
+                            child: Row(
+                              children: <Widget>[
+                                Image.asset('assets/images/dot.png',
+                                    color: Colors.grey, height: 16.0),
+                                SizedBox(width: 16.0),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      'Cuti tahunan',
+                                      style: text14bold,
+                                    ),
+                                    SizedBox(height: 2.0),
+                                    Text('13 Feb 2020 - 15 Feb 2020, Direview',
+                                        style: text14),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                           Padding(padding: EdgeInsets.all(4.00)),
-                          new Container(
-                            height: 36.00,
-                            width: 275.00,
-                            decoration: BoxDecoration(
-                              color: Color(0xfff4f4f4),
-                              borderRadius: BorderRadius.circular(15.00),
+                          Container(
+                            height: 42.00,
+                            child: Row(
+                              children: <Widget>[
+                                Image.asset('assets/images/dot.png',
+                                    color: Colors.red, height: 16.0),
+                                SizedBox(width: 16.0),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      'Cuti tahunan',
+                                      style: text14bold,
+                                    ),
+                                    SizedBox(height: 2.0),
+                                    Text('13 Feb 2020 - 15 Feb 2020, Ditolak',
+                                        style: text14),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                           Padding(padding: EdgeInsets.all(4.00)),
-                          new Container(
-                            height: 36.00,
-                            width: 275.00,
-                            decoration: BoxDecoration(
-                              color: Color(0xfff4f4f4),
-                              borderRadius: BorderRadius.circular(15.00),
+                          Container(
+                            height: 42.00,
+                            child: Row(
+                              children: <Widget>[
+                                Image.asset('assets/images/dot.png',
+                                    height: 16.0),
+                                SizedBox(width: 16.0),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      'Cuti tahunan',
+                                      style: text14bold,
+                                    ),
+                                    SizedBox(height: 2.0),
+                                    Text('13 Feb 2020 - 15 Feb 2020, Disetujui',
+                                        style: text14),
+                                  ],
+                                ),
+                              ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),

@@ -66,6 +66,9 @@ flutter:
   - assets/images/ic_sick.png
 
   - assets/images/avatar.png
+  - assets/images/dot.png
+  - assets/images/login.png
+  - assets/images/logout.png
   #18-6-96
 
 
