@@ -87,20 +87,7 @@ class _ReportPageState extends State<ReportPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        DropdownButton<String>(
-                          hint: Text(
-                            'Tahun',
-                            style: text14bold,
-                          ),
-                          items: <String>['2018', '2019', '2020', '2021']
-                              .map((String value) {
-                            return new DropdownMenuItem<String>(
-                              value: value,
-                              child: new Text(value),
-                            );
-                          }).toList(),
-                          onChanged: (_) {},
-                        ),
+                        Text('Tahun 2020', style: text16bold),
                         SizedBox(
                           width: 16.0,
                         ),
@@ -154,7 +141,7 @@ class _ReportPageState extends State<ReportPage> {
                                   children: <Widget>[
                                     Image.asset(
                                       'assets/images/login.png',
-                                      height: 30.0,
+                                      height: 28.0,
                                     ),
                                     SizedBox(width: 8.0),
                                     Text('08.00am', style: text14bold)
@@ -164,7 +151,7 @@ class _ReportPageState extends State<ReportPage> {
                                   children: <Widget>[
                                     Image.asset(
                                       'assets/images/logout.png',
-                                      height: 30.0,
+                                      height: 28.0,
                                     ),
                                     SizedBox(width: 8.0),
                                     Text('05.00pm', style: text14bold)
@@ -194,7 +181,7 @@ class _ReportPageState extends State<ReportPage> {
                                   children: <Widget>[
                                     Image.asset(
                                       'assets/images/login.png',
-                                      height: 30.0,
+                                      height: 28.0,
                                     ),
                                     SizedBox(width: 8.0),
                                     Text('08.00am', style: text14bold)
@@ -204,7 +191,7 @@ class _ReportPageState extends State<ReportPage> {
                                   children: <Widget>[
                                     Image.asset(
                                       'assets/images/logout.png',
-                                      height: 30.0,
+                                      height: 28.0,
                                     ),
                                     SizedBox(width: 8.0),
                                     Text('05.00pm', style: text14bold)
@@ -234,7 +221,7 @@ class _ReportPageState extends State<ReportPage> {
                                   children: <Widget>[
                                     Image.asset(
                                       'assets/images/login.png',
-                                      height: 30.0,
+                                      height: 28.0,
                                     ),
                                     SizedBox(width: 8.0),
                                     Text('08.00am', style: text14bold)
@@ -244,7 +231,7 @@ class _ReportPageState extends State<ReportPage> {
                                   children: <Widget>[
                                     Image.asset(
                                       'assets/images/logout.png',
-                                      height: 30.0,
+                                      height: 28.0,
                                     ),
                                     SizedBox(width: 8.0),
                                     Text('05.00pm', style: text14bold)

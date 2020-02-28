@@ -20,6 +20,40 @@ class _AccountPageState extends State<AccountPage> {
     color: Colors.white,
   );
 
+  TextStyle text22bold = TextStyle(
+    fontFamily: 'Montserrat',
+    fontSize: 22.0,
+    fontWeight: FontWeight.bold,
+  );
+
+  TextStyle text18bold = TextStyle(
+    fontFamily: 'Montserrat',
+    fontSize: 18.0,
+    fontWeight: FontWeight.bold,
+  );
+
+  TextStyle text16bold = TextStyle(
+    fontFamily: 'Montserrat',
+    fontSize: 16.0,
+    fontWeight: FontWeight.bold,
+  );
+
+  TextStyle text14bold = TextStyle(
+    fontFamily: 'Montserrat',
+    fontSize: 14.0,
+    fontWeight: FontWeight.bold,
+  );
+
+  TextStyle text14 = TextStyle(
+    fontFamily: 'Montserrat',
+    fontSize: 14.0,
+  );
+
+  TextStyle text12 = TextStyle(
+    fontFamily: 'Montserrat',
+    fontSize: 12.0,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,24 +108,72 @@ class _AccountPageState extends State<AccountPage> {
                 Column(
                   children: <Widget>[
                     Container(
-                      height: 30.00,
+                      //height: 50.00,
+                      padding: EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
                         color: Color(0xfff4f4f4),
                         borderRadius: BorderRadius.circular(15.00),
                       ),
+                      child: Row(
+                        children: <Widget>[
+                          Image.asset('assets/images/account.png',
+                              height: 28.0),
+                          SizedBox(
+                            width: 16.0,
+                          ),
+                          Text(
+                            'Edit Profile',
+                            style: text14bold,
+                          )
+                        ],
+                      ),
                     ),
-                    Padding(padding: EdgeInsets.all(8.0)),
+                    Padding(padding: EdgeInsets.all(4.0)),
                     Container(
-                      height: 30.00,
+                      //height: 50.00,
+                      padding: EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
                         color: Color(0xfff4f4f4),
                         borderRadius: BorderRadius.circular(15.00),
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Image.asset('assets/images/help.png', height: 28.0),
+                          SizedBox(
+                            width: 16.0,
+                          ),
+                          Text(
+                            'Edit Profile',
+                            style: text14bold,
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(padding: EdgeInsets.all(4.0)),
+                    Container(
+                      //height: 50.00,
+                      padding: EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        color: Color(0xfff4f4f4),
+                        borderRadius: BorderRadius.circular(15.00),
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Image.asset('assets/images/help.png', height: 28.0),
+                          SizedBox(
+                            width: 16.0,
+                          ),
+                          Text(
+                            'Help',
+                            style: text14bold,
+                          )
+                        ],
                       ),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 150.0,
+                  height: 100.0,
                 ),
                 Material(
                   elevation: 2.0,
