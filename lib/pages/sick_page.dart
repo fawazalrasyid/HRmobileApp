@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/dashboard.dart';
 
-class SakitPage extends StatefulWidget {
+import 'dart:async';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
+
+class SickPage extends StatefulWidget {
   @override
-  _SakitPageState createState() => _SakitPageState();
+  _SickPageState createState() => _SickPageState();
 }
 
-class _SakitPageState extends State<SakitPage> {
+class _SickPageState extends State<SickPage> {
+  File image;
+  Future getImage() async {
+    File picture = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      image = picture;
+    });
+  }
+
   TextStyle textwhiteStyle = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 18.0,
@@ -186,7 +198,7 @@ class _SakitPageState extends State<SakitPage> {
                                               initialDate: _dateTimeend == null
                                                   ? _dateTimestar
                                                   : _dateTimeend,
-                                              firstDate: DateTime(2015),
+                                              firstDate: DateTime(2020),
                                               lastDate: DateTime(2030))
                                           .then((date) {
                                         setState(() {
@@ -207,27 +219,43 @@ class _SakitPageState extends State<SakitPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "Alasan",
+                            "Upload Surat Dokter",
                             style: text14bold,
                           ),
                           SizedBox(
                             height: 16.0,
                           ),
-                          TextField(
-                            maxLines: 6,
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(8.0),
-                              hintText: "Alasan...",
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Color(0xFF707070)),
-                                  borderRadius: BorderRadius.circular(10)),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Color(0xFF707070)),
-                                  borderRadius: BorderRadius.circular(10)),
-                            ),
-                          )
+                          Container(
+                              height: 125.00,
+                              width: double.maxFinite,
+                              //padding: EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                color: Color(0xffffffff),
+                                borderRadius: BorderRadius.circular(13.00),
+                              ),
+                              child: Stack(
+                                children: <Widget>[
+                                  Container(
+                                    height: double.maxFinite,
+                                      width: double.maxFinite,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xffffffff),
+                                        borderRadius:
+                                            BorderRadius.circular(13.00),
+                                      ),
+                                      child: image == null
+                                          ? Text('')
+                                          : Image.file(image, fit: BoxFit.cover,)),
+                                  Center(
+                                    child: FlatButton(
+                                        onPressed: getImage,
+                                        child: Image.asset(
+                                          'assets/images/upload.png',
+                                          height: 50.0,
+                                        )),
+                                  ),
+                                ],
+                              ))
                         ],
                       ),
                       SizedBox(
@@ -248,7 +276,7 @@ class _SakitPageState extends State<SakitPage> {
                             );
                           },
                           child: Text(
-                            'Ajukan Sakit',
+                            'Ajukan Izin Sakit',
                             textAlign: TextAlign.center,
                             style: textwhiteStyle,
                           ),

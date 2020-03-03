@@ -11,6 +11,8 @@ void main() {
           color: Colors.white,
         ),
         accentColor: Color(0xffFF3030),
+        primaryColor: Color(0xffFF3030),
+        primaryColorDark: Color(0xffFF3030),
       ),
   ));
 }

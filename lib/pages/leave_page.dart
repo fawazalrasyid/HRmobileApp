@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/dashboard.dart';
 
-class CutiPage extends StatefulWidget {
+class LeavePage extends StatefulWidget {
   @override
-  _CutiPageState createState() => _CutiPageState();
+  _LeavePageState createState() => _LeavePageState();
 }
 
-class _CutiPageState extends State<CutiPage> {
+class _LeavePageState extends State<LeavePage> {
   TextStyle textwhiteStyle = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 18.0,

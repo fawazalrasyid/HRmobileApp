@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:hr_app/pages/CountDownTimer.dart';
 import 'package:hr_app/pages/absensi_page.dart';
-import 'package:hr_app/pages/cuti_page.dart';
-import 'package:hr_app/pages/izin_page.dart';
+import 'package:hr_app/pages/leave_page.dart';
+import 'package:hr_app/pages/permission_page.dart';
 import 'package:hr_app/pages/remote_page.dart';
-import 'package:hr_app/pages/sakit_page.dart';
+import 'package:hr_app/pages/sick_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -89,7 +88,7 @@ class _HomePage extends State<HomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CutiPage()),
+                                      builder: (context) => LeavePage()),
                                 );
                               },
                               child: Center(
@@ -121,7 +120,7 @@ class _HomePage extends State<HomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => IzinPage()),
+                                      builder: (context) => PermissionPage()),
                                 );
                               },
                               child: Center(
@@ -156,7 +155,7 @@ class _HomePage extends State<HomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SakitPage()),
+                                      builder: (context) => SickPage()),
                                 );
                               },
                               child: Center(

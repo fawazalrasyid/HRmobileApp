@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/dashboard.dart';
 
-class IzinPage extends StatefulWidget {
+class PermissionPage extends StatefulWidget {
   @override
-  _IzinPageState createState() => _IzinPageState();
+  _PermissionPageState createState() => _PermissionPageState();
 }
 
-class _IzinPageState extends State<IzinPage> {
+class _PermissionPageState extends State<PermissionPage> {
   TextStyle textwhiteStyle = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 18.0,
