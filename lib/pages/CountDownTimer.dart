@@ -1,6 +1,6 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: AbsensiPage(),
+      home: CountDownTimer(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         iconTheme: IconThemeData(
@@ -20,18 +20,18 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class AbsensiPage extends StatefulWidget {
+class CountDownTimer extends StatefulWidget {
   @override
-  _AbsensiPageState createState() => _AbsensiPageState();
+  _CountDownTimerState createState() => _CountDownTimerState();
 }
 
-class _AbsensiPageState extends State<AbsensiPage>
+class _CountDownTimerState extends State<CountDownTimer>
     with TickerProviderStateMixin {
   AnimationController controller;
 
   String get timerString {
     Duration duration = controller.duration * controller.value;
-    return '${duration.inHours}:${duration.inMinutes % 60}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
+    return '${duration.inHours}:${(duration.inMinutes % 60).toString().padLeft(2, '0')}';
   }
 
   @override
@@ -39,46 +39,8 @@ class _AbsensiPageState extends State<AbsensiPage>
     super.initState();
     controller = AnimationController(
       vsync: this,
-      duration: Duration(hours: 9),
+      duration: Duration(seconds: 10),
     );
-  }
-
-  TextStyle text22bold = TextStyle(
-    fontFamily: 'Montserrat',
-    fontSize: 22.0,
-    fontWeight: FontWeight.bold,
-  );
-
-  TextStyle text18bold = TextStyle(
-    fontFamily: 'Montserrat',
-    fontSize: 18.0,
-    fontWeight: FontWeight.bold,
-  );
-
-  TextStyle text16bold = TextStyle(
-    fontFamily: 'Montserrat',
-    fontSize: 16.0,
-    fontWeight: FontWeight.bold,
-  );
-
-  TextStyle text14bold = TextStyle(
-    fontFamily: 'Montserrat',
-    fontSize: 14.0,
-    fontWeight: FontWeight.bold,
-  );
-
-  TextStyle text14 = TextStyle(
-    fontFamily: 'Montserrat',
-    fontSize: 14.0,
-  );
-
-  //DateTime now = DateTime.now();
-  String get date {
-    return DateFormat('EEEE d MMMM yyyy').format(DateTime.now());
-  }
-
-  String get time {
-    return DateFormat('kk:mm').format(DateTime.now());
   }
 
   @override
@@ -103,55 +65,6 @@ class _AbsensiPageState extends State<AbsensiPage>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      SizedBox(height: 32.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                            child: Icon(
-                              Icons.keyboard_backspace,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Container(
-                            width: 320.0,
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Absensi',
-                              textAlign: TextAlign.center,
-                              style: text16bold,
-                            ),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 32.0,
-                      ),
-                      Container(
-                        height: 150.00,
-                        width: double.maxFinite,
-                        padding: EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          color: Color(0xfff4f4f4),
-                          borderRadius: BorderRadius.circular(15.00),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(date, style: text16bold),
-                            Text(
-                              time,
-                              style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontSize: 50,
-                                color: Color(0xff000000),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 32.0),
                       Expanded(
                         child: Align(
                           alignment: FractionalOffset.center,
@@ -169,14 +82,15 @@ class _AbsensiPageState extends State<AbsensiPage>
                                 Align(
                                   alignment: FractionalOffset.center,
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Text(
                                         timerString,
                                         style: TextStyle(
-                                            fontSize: 60.0,
+                                            fontSize: 112.0,
                                             color: Colors.black),
                                       ),
                                     ],
@@ -193,7 +107,7 @@ class _AbsensiPageState extends State<AbsensiPage>
                             return FloatingActionButton.extended(
                                 onPressed: () {
                                   if (controller.isAnimating)
-                                    controller.reset();
+                                    controller.stop();
                                   else {
                                     controller.reverse(
                                         from: controller.value == 0.0
@@ -232,7 +146,7 @@ class CustomTimerPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
       ..color = backgroundColor
-      ..strokeWidth = 30.0
+      ..strokeWidth = 25.0
       ..strokeCap = StrokeCap.butt
       ..style = PaintingStyle.stroke;
 

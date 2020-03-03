@@ -18,6 +18,8 @@ environment:
 
 dependencies:
 
+  intl: ^0.16.1
+
   flutter:
     sdk: flutter
 

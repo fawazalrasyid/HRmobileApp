@@ -6,5 +6,11 @@ void main() {
     debugShowCheckedModeBanner: false,
     title: 'HR APP',
     home: SplashScreen(),
+    theme: ThemeData(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        accentColor: Color(0xffFF3030),
+      ),
   ));
 }
