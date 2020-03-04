@@ -84,17 +84,16 @@ class _SickPageState extends State<SickPage> {
             child: Column(
               children: <Widget>[
                 SizedBox(height: 32.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                Stack(
                   children: <Widget>[
                     Container(
+                      alignment: Alignment.centerLeft,
                       child: Icon(
                         Icons.keyboard_backspace,
                         color: Colors.black,
                       ),
                     ),
                     Container(
-                      width: 320.0,
                       alignment: Alignment.center,
                       child: Text(
                         'Sakit',
@@ -236,7 +235,7 @@ class _SickPageState extends State<SickPage> {
                               child: Stack(
                                 children: <Widget>[
                                   Container(
-                                    height: double.maxFinite,
+                                      height: double.maxFinite,
                                       width: double.maxFinite,
                                       decoration: BoxDecoration(
                                         color: Color(0xffffffff),
@@ -245,7 +244,10 @@ class _SickPageState extends State<SickPage> {
                                       ),
                                       child: image == null
                                           ? Text('')
-                                          : Image.file(image, fit: BoxFit.cover,)),
+                                          : Image.file(
+                                              image,
+                                              fit: BoxFit.cover,
+                                            )),
                                   Center(
                                     child: FlatButton(
                                         onPressed: getImage,

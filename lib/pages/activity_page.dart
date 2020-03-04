@@ -75,20 +75,19 @@ class _ActivityPageState extends State<ActivityPage> {
                 SizedBox(
                   height: 32.0,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                Stack(
                   children: <Widget>[
                     Container(
+                      alignment: Alignment.centerLeft,
                       child: Icon(
                         Icons.keyboard_backspace,
                         color: Colors.black,
                       ),
                     ),
                     Container(
-                      width: 320.0,
                       alignment: Alignment.center,
                       child: Text(
-                        'Cuti',
+                        'Sakit',
                         textAlign: TextAlign.center,
                         style: text16bold,
                       ),
