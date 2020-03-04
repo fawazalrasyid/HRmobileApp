@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:hr_app/pages/absensi_page.dart';
-import 'package:hr_app/pages/leave_page.dart';
-import 'package:hr_app/pages/permission_page.dart';
-import 'package:hr_app/pages/remote_page.dart';
-import 'package:hr_app/pages/sick_page.dart';
+import 'package:hr_app/menu/absensi_page.dart';
+import 'package:hr_app/menu/leave_page.dart';
+import 'package:hr_app/menu/permission_page.dart';
+import 'package:hr_app/menu/remote_page.dart';
+import 'package:hr_app/menu/sick_page.dart';
+import 'package:hr_app/pages/activity_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -390,12 +391,21 @@ class _HomePage extends State<HomePage> {
                               'Aktivitas',
                               style: text16bold,
                             ),
-                            Text(
-                              'Lihat Semua',
-                              style: text14.copyWith(
-                                color: Color(0xff456EFE),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ActivityPage()),
+                                );
+                              },
+                              child: Text(
+                                'Lihat Semua',
+                                style: text14.copyWith(
+                                  color: Color(0xff456EFE),
+                                ),
                               ),
-                            ),
+                            )
                           ],
                         ),
                       ],

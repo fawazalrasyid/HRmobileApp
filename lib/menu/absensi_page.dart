@@ -43,6 +43,13 @@ class _AbsensiPageState extends State<AbsensiPage>
     );
   }
 
+  TextStyle textwhiteStyle = TextStyle(
+    fontFamily: 'Montserrat',
+    fontSize: 20.0,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+  );
+
   TextStyle text22bold = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 22.0,
@@ -187,10 +194,18 @@ class _AbsensiPageState extends State<AbsensiPage>
                           ),
                         ),
                       ),
+                      SizedBox(height: 32.0),
                       AnimatedBuilder(
                           animation: controller,
                           builder: (context, child) {
-                            return FloatingActionButton.extended(
+                            return Material(
+                              elevation: 2.0,
+                              borderRadius: BorderRadius.circular(15.0),
+                              color: Color(0xffFF3030),
+                              child: MaterialButton(
+                                minWidth: MediaQuery.of(context).size.width,
+                                padding:
+                                    EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                                 onPressed: () {
                                   if (controller.isAnimating)
                                     controller.reset();
@@ -201,12 +216,13 @@ class _AbsensiPageState extends State<AbsensiPage>
                                             : controller.value);
                                   }
                                 },
-                                icon: Icon(controller.isAnimating
-                                    ? Icons.pause
-                                    : Icons.play_arrow),
-                                label: Text(controller.isAnimating
-                                    ? "Pulang"
-                                    : "Masuk"));
+                                child: Text(
+                                  controller.isAnimating ? "Pulang" : "Masuk",
+                                  textAlign: TextAlign.center,
+                                  style: textwhiteStyle,
+                                ),
+                              ),
+                            );
                           }),
                     ],
                   ),
