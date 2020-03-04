@@ -85,7 +85,7 @@ class _AbsensiPageState extends State<AbsensiPage>
   }
 
   String get time {
-    return DateFormat('kk:mm').format(DateTime.now());
+    return DateFormat('k:mm').format(DateTime.now());
   }
 
   @override
@@ -183,6 +183,7 @@ class _AbsensiPageState extends State<AbsensiPage>
                                       Text(
                                         timerString,
                                         style: TextStyle(
+                                            fontFamily: 'Montserrat',
                                             fontSize: 60.0,
                                             color: Colors.black),
                                       ),
