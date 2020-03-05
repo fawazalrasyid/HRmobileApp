@@ -205,7 +205,8 @@ class _PermissionPageState extends State<PermissionPage> {
                                         });
                                       });
                                     },
-                                  ))
+                                  ),
+                                ),
                             ],
                           ),
                           Divider(height: 1.0, color: Colors.black)

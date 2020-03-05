@@ -32,7 +32,6 @@ class AbsensiPage extends StatefulWidget {
 class _AbsensiPageState extends State<AbsensiPage>
     with TickerProviderStateMixin {
   AnimationController controller;
-
   String get timerString {
     Duration duration = controller.duration * controller.value;
     return '${duration.inHours}:${duration.inMinutes % 60}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
@@ -83,12 +82,112 @@ class _AbsensiPageState extends State<AbsensiPage>
     fontSize: 14.0,
   );
 
+// For make Date
   String get date {
     return DateFormat('EEEE d MMMM yyyy').format(DateTime.now());
   }
 
+// For make Time
   String get time {
     return DateFormat('k:mm').format(DateTime.now());
+  }
+
+// For Box Decoration
+  Container boxDecoration() {
+    return Container(
+      height: 150.00,
+      width: double.maxFinite,
+      padding: EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: Color(0xfff4f4f4),
+        borderRadius: BorderRadius.circular(15.00),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(date, style: text16bold),
+          Text(
+            time,
+            style: TextStyle(
+              fontFamily: "Montserrat",
+              fontSize: 50,
+              color: Color(0xff000000),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  // For Stopwatch
+  Expanded buildStopwatch() {
+    return Expanded(
+      child: Align(
+        alignment: FractionalOffset.center,
+        child: AspectRatio(
+          aspectRatio: 1.0,
+          child: Stack(
+            children: <Widget>[
+              Positioned.fill(
+                child: CustomPaint(
+                    painter: CustomTimerPainter(
+                        animation: controller,
+                        backgroundColor: Color(0xffFDCB58),
+                        color: Color(0xffFEEF88))),
+              ),
+              Align(
+                alignment: FractionalOffset.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      timerString,
+                      style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 60.0,
+                          color: Colors.black),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+// For button Animated
+  AnimatedBuilder buttonAnimatedBuilder() {
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (context, child) {
+        return Material(
+          elevation: 2.0,
+          borderRadius: BorderRadius.circular(15.0),
+          color: Color(0xffFF3030),
+          child: MaterialButton(
+            minWidth: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            onPressed: () {
+              if (controller.isAnimating)
+                controller.reset();
+              else {
+                controller.reverse(
+                    from: controller.value == 0.0 ? 1.0 : controller.value);
+              }
+            },
+            child: Text(
+              controller.isAnimating ? "Pulang" : "Masuk",
+              textAlign: TextAlign.center,
+              style: textwhiteStyle,
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -147,99 +246,13 @@ class _AbsensiPageState extends State<AbsensiPage>
                       SizedBox(
                         height: 32.0,
                       ),
-                      Container(
-                        height: 150.00,
-                        width: double.maxFinite,
-                        padding: EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          color: Color(0xfff4f4f4),
-                          borderRadius: BorderRadius.circular(15.00),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(date, style: text16bold),
-                            Text(
-                              time,
-                              style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontSize: 50,
-                                color: Color(0xff000000),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                      boxDecoration(),
                       SizedBox(height: 32.0),
-                      Expanded(
-                        child: Align(
-                          alignment: FractionalOffset.center,
-                          child: AspectRatio(
-                            aspectRatio: 1.0,
-                            child: Stack(
-                              children: <Widget>[
-                                Positioned.fill(
-                                  child: CustomPaint(
-                                      painter: CustomTimerPainter(
-                                          animation: controller,
-                                          backgroundColor: Color(0xffFDCB58),
-                                          color: Color(0xffFEEF88))),
-                                ),
-                                Align(
-                                  alignment: FractionalOffset.center,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text(
-                                        timerString,
-                                        style: TextStyle(
-                                            fontFamily: 'Montserrat',
-                                            fontSize: 60.0,
-                                            color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                      buildStopwatch(),
                       SizedBox(
                         height: 40,
                       ),
-                      AnimatedBuilder(
-                          animation: controller,
-                          builder: (context, child) {
-                            return Material(
-                              elevation: 2.0,
-                              borderRadius: BorderRadius.circular(15.0),
-                              color: Color(0xffFF3030),
-                              child: MaterialButton(
-                                minWidth: MediaQuery.of(context).size.width,
-                                padding:
-                                    EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                                onPressed: () {
-                                  if (controller.isAnimating)
-                                    controller.reset();
-                                  else {
-                                    controller.reverse(
-                                        from: controller.value == 0.0
-                                            ? 1.0
-                                            : controller.value);
-                                  }
-                                },
-                                child: Text(
-                                  controller.isAnimating ? "Pulang" : "Masuk",
-                                  textAlign: TextAlign.center,
-                                  style: textwhiteStyle,
-                                ),
-                              ),
-                            );
-                          }),
+                      buttonAnimatedBuilder(),
                     ],
                   ),
                 ),

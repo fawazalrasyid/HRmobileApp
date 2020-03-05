@@ -132,10 +132,18 @@ class _LeavePageState extends State<LeavePage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          Text("Kuota\n10",
-                              style: text18bold, textAlign: TextAlign.center),
-                          Text("Terpakai\n2",
-                              style: text18bold, textAlign: TextAlign.center),
+                          Column(
+                            children: <Widget>[
+                               Text("Kuota",style: text18bold, textAlign: TextAlign.center),
+                               Text("10", style: text16, textAlign: TextAlign.center,),
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Text("Terpakai",style: text18bold, textAlign: TextAlign.center),
+                              Text("2", style: text16, textAlign: TextAlign.center),
+                            ],
+                          ),
                         ],
                       )
                     ],
