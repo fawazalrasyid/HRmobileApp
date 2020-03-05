@@ -2,6 +2,8 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../dashboard.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -21,6 +23,8 @@ class MyApp extends StatelessWidget {
 }
 
 class AbsensiPage extends StatefulWidget {
+  static var tag;
+
   @override
   _AbsensiPageState createState() => _AbsensiPageState();
 }
@@ -79,7 +83,6 @@ class _AbsensiPageState extends State<AbsensiPage>
     fontSize: 14.0,
   );
 
-  //DateTime now = DateTime.now();
   String get date {
     return DateFormat('EEEE d MMMM yyyy').format(DateTime.now());
   }
@@ -114,12 +117,25 @@ class _AbsensiPageState extends State<AbsensiPage>
                       Stack(
                         children: <Widget>[
                           Container(
+<<<<<<< HEAD:lib/menu/absensi_page.dart
                             alignment: Alignment.centerLeft,
                             child: Icon(
                               Icons.keyboard_backspace,
                               color: Colors.black,
+=======
+                            child: FlatButton(
+                              child: Icon(Icons.keyboard_backspace),
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (_) {
+                                    return Dashboard();
+                                  }),
+                                );
+                              },
+>>>>>>> 0b2ee1efad37b5bfab08d5c246aab70ce0e2c2e1:lib/pages/absensi_page.dart
                             ),
                           ),
+                          SizedBox(width: 45,),
                           Container(
                             alignment: Alignment.center,
                             child: Text(
@@ -194,7 +210,13 @@ class _AbsensiPageState extends State<AbsensiPage>
                           ),
                         ),
                       ),
+<<<<<<< HEAD:lib/menu/absensi_page.dart
                       SizedBox(height: 32.0),
+=======
+                      SizedBox(
+                        height: 40,
+                      ),
+>>>>>>> 0b2ee1efad37b5bfab08d5c246aab70ce0e2c2e1:lib/pages/absensi_page.dart
                       AnimatedBuilder(
                           animation: controller,
                           builder: (context, child) {
