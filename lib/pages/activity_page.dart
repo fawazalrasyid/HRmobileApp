@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../dashboard.dart';
+
 class ActivityPage extends StatefulWidget {
   @override
   _ActivityPageState createState() => _ActivityPageState();
@@ -76,11 +78,21 @@ class _ActivityPageState extends State<ActivityPage> {
                 ),
                 Stack(
                   children: <Widget>[
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: Icon(
-                        Icons.keyboard_backspace,
-                        color: Colors.black,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Dashboard()),
+                          ModalRoute.withName('/'),
+                        );
+                      },
+                      child: Container(
+                        alignment: Alignment.centerLeft,
+                        child: Icon(
+                          Icons.keyboard_backspace,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                     Container(

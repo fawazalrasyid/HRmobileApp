@@ -33,6 +33,11 @@ class _HomePage extends State<HomePage> {
     fontWeight: FontWeight.bold,
   );
 
+  TextStyle text16 = TextStyle(
+    fontFamily: 'Montserrat',
+    fontSize: 16.0,
+  );
+
   TextStyle text14bold = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 14.0,
@@ -73,23 +78,18 @@ class _HomePage extends State<HomePage> {
                               Text(
                                 "Users",
                                 textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontFamily: "Raleway",
-                                    fontWeight: FontWeight.w900),
+                                style: text16bold,
                               ),
                               Text(
                                 'Junior Programmer',
-                                style: text14,
+                                style: text16,
                               ),
                             ],
                           ),
                         ),
                         Image.asset(
                           "assets/images/avatar.png",
-                          width: 60,
-                          height: 60,
+                          height: 50,
                         ),
                       ],
                     ),

@@ -41,17 +41,10 @@ class _ReportPageState extends State<ReportPage> {
     fontSize: 12.0,
   );
 
-  String get years {
-    return DateFormat('MMMM yyyy').format(DateTime.now());
+  String get year {
+    return DateFormat('yyyy').format(DateTime.now());
   }
 
-  String get day {
-    return DateFormat('EE').format(DateTime.now());
-  }
-
-  String get date {
-    return DateFormat('yMMMM').format(DateTime.now());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +92,7 @@ class _ReportPageState extends State<ReportPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Text(years, style: text16bold),
+                        Text('Tahun '+year, style: text16bold),
                         SizedBox(
                           width: 16.0,
                         ),
@@ -128,8 +121,8 @@ class _ReportPageState extends State<ReportPage> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text(day, style: text14bold),
-                                    Text(date, style: text12)
+                                    Text('Senin', style: text14bold),
+                                    Text('22/02/2020', style: text12)
                                   ],
                                 ),
                                 Row(
