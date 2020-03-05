@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hr_app/login_page.dart';
 
 class ActivityPage extends StatefulWidget {
   @override
@@ -87,7 +86,7 @@ class _ActivityPageState extends State<ActivityPage> {
                     Container(
                       alignment: Alignment.center,
                       child: Text(
-                        'Sakit',
+                        'Aktivitas',
                         textAlign: TextAlign.center,
                         style: text16bold,
                       ),

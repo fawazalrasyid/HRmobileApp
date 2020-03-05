@@ -110,7 +110,7 @@ class _AbsensiPageState extends State<AbsensiPage>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      SizedBox(height: 32.0),
+                      SizedBox(height: 42.0),
                       Stack(
                         children: <Widget>[
                           Container(
@@ -123,7 +123,7 @@ class _AbsensiPageState extends State<AbsensiPage>
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              'Sakit',
+                              'Absensi',
                               textAlign: TextAlign.center,
                               style: text16bold,
                             ),

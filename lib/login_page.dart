@@ -11,7 +11,6 @@ class MyApp extends StatelessWidget {
 }
 
 class LoginPage extends StatefulWidget {
-  static String tag = 'login-page';
   @override
   _LoginPage createState() => _LoginPage();
 }

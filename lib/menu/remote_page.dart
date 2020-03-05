@@ -84,7 +84,7 @@ class _RemotePageState extends State<RemotePage> {
                     Container(
                       alignment: Alignment.center,
                       child: Text(
-                        'Sakit',
+                        'Remote',
                         textAlign: TextAlign.center,
                         style: text16bold,
                       ),

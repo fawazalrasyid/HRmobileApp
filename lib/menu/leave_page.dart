@@ -84,7 +84,7 @@ class _LeavePageState extends State<LeavePage> {
                     Container(
                       alignment: Alignment.center,
                       child: Text(
-                        'Sakit',
+                        'Cuti',
                         textAlign: TextAlign.center,
                         style: text16bold,
                       ),

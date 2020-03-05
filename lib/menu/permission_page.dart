@@ -84,7 +84,7 @@ class _PermissionPageState extends State<PermissionPage> {
                     Container(
                       alignment: Alignment.center,
                       child: Text(
-                        'Sakit',
+                        'Izin',
                         textAlign: TextAlign.center,
                         style: text16bold,
                       ),
