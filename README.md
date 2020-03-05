@@ -1,4 +1,4 @@
-# hr_app
+# Roketin HR APP
 
 A new Flutter project.
 
