@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/dashboard.dart';
+import 'package:intl/intl.dart';
 
 class LeavePage extends StatefulWidget {
+  static var tag;
+
   @override
   _LeavePageState createState() => _LeavePageState();
 }
@@ -55,6 +58,10 @@ class _LeavePageState extends State<LeavePage> {
 
   DateTime _dateTimestar, _dateTimeend;
 
+  String get dates {
+    return DateFormat('d MMMM yyyy').formatDuration(_dateTimeend);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,12 +82,25 @@ class _LeavePageState extends State<LeavePage> {
                 Stack(
                   children: <Widget>[
                     Container(
+<<<<<<< HEAD:lib/menu/leave_page.dart
                       alignment: Alignment.centerLeft,
                       child: Icon(
                         Icons.keyboard_backspace,
                         color: Colors.black,
+=======
+                      child: FlatButton(
+                        child: Icon(Icons.keyboard_backspace),
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (_) {
+                              return Dashboard();
+                            }),
+                          );
+                        },
+>>>>>>> 0b2ee1efad37b5bfab08d5c246aab70ce0e2c2e1:lib/pages/leave_page.dart
                       ),
                     ),
+                    SizedBox(width: 60,),
                     Container(
                       alignment: Alignment.center,
                       child: Text(

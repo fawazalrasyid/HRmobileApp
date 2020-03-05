@@ -6,6 +6,8 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 class SickPage extends StatefulWidget {
+  static var tag;
+
   @override
   _SickPageState createState() => _SickPageState();
 }
@@ -87,11 +89,26 @@ class _SickPageState extends State<SickPage> {
                 Stack(
                   children: <Widget>[
                     Container(
+<<<<<<< HEAD:lib/menu/sick_page.dart
                       alignment: Alignment.centerLeft,
                       child: Icon(
                         Icons.keyboard_backspace,
                         color: Colors.black,
+=======
+                      child: FlatButton(
+                        child: Icon(Icons.keyboard_backspace),
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (_) {
+                              return Dashboard();
+                            }),
+                          );
+                        },
+>>>>>>> 0b2ee1efad37b5bfab08d5c246aab70ce0e2c2e1:lib/pages/sick_page.dart
                       ),
+                    ),
+                    SizedBox(
+                      width: 55,
                     ),
                     Container(
                       alignment: Alignment.center,
