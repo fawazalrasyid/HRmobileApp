@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hr_app/dashboard.dart';
 
 class RemotePage extends StatefulWidget {
+  static var tag;
+
   @override
   _RemotePageState createState() => _RemotePageState();
 }
@@ -76,13 +78,21 @@ class _RemotePageState extends State<RemotePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      child: Icon(
-                        Icons.keyboard_backspace,
-                        color: Colors.black,
+                      child: FlatButton(
+                        child: Icon(Icons.keyboard_backspace),
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (_) {
+                              return Dashboard();
+                            }),
+                          );
+                        },
                       ),
                     ),
+                    SizedBox(
+                      width: 45,
+                    ),
                     Container(
-                      width: 320.0,
                       alignment: Alignment.center,
                       child: Text(
                         'Remote',

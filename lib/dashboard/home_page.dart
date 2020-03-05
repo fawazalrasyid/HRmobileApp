@@ -7,6 +7,8 @@ import 'package:hr_app/pages/remote_page.dart';
 import 'package:hr_app/pages/sick_page.dart';
 
 class HomePage extends StatefulWidget {
+  static var tag;
+
   @override
   _HomePage createState() => _HomePage();
 }
@@ -62,11 +64,32 @@ class _HomePage extends State<HomePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text(
-                          'Fawaz Al Rasyid \nJunior Programmer',
-                          style: text16bold,
+                        Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                "Users",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontFamily: "Raleway",
+                                    fontWeight: FontWeight.w900),
+                              ),
+                              Text(
+                                'Junior Programmer',
+                                style: text14,
+                              ),
+                            ],
+                          ),
                         ),
-                        Image.asset('assets/images/avatar.png', height: 50.0),
+                        Image.asset(
+                          "assets/images/avatar.png",
+                          width: 60,
+                          height: 60,
+                        ),
                       ],
                     ),
                     SizedBox(
@@ -85,10 +108,11 @@ class _HomePage extends State<HomePage> {
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
                               onTap: () {
-                                Navigator.push(
+                                Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => LeavePage()),
+                                      builder: (BuildContext context) => LeavePage()),
+                                  ModalRoute.withName('/'),
                                 );
                               },
                               child: Center(
@@ -117,10 +141,11 @@ class _HomePage extends State<HomePage> {
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
                               onTap: () {
-                                Navigator.push(
+                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PermissionPage()),
+                                      builder: (BuildContext context) => PermissionPage()),
+                                  ModalRoute.withName('/'),
                                 );
                               },
                               child: Center(
@@ -152,10 +177,11 @@ class _HomePage extends State<HomePage> {
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
                               onTap: () {
-                                Navigator.push(
+                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SickPage()),
+                                      builder: (BuildContext context) => SickPage()),
+                                  ModalRoute.withName('/'),
                                 );
                               },
                               child: Center(
@@ -187,10 +213,11 @@ class _HomePage extends State<HomePage> {
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
                               onTap: () {
-                                Navigator.push(
+                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => AbsensiPage()),
+                                      builder: (BuildContext context) => AbsensiPage()),
+                                  ModalRoute.withName('/'),
                                 );
                               },
                               child: Center(
@@ -222,10 +249,11 @@ class _HomePage extends State<HomePage> {
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
                               onTap: () {
-                                Navigator.push(
+                                Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => RemotePage()),
+                                      builder: (BuildContext context) => RemotePage()),
+                                  ModalRoute.withName('/'),
                                 );
                               },
                               child: Center(
@@ -380,7 +408,7 @@ class _HomePage extends State<HomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 36.0),
+                    SizedBox(height: 38.0),
                     Column(
                       children: <Widget>[
                         Row(

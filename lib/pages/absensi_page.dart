@@ -2,6 +2,8 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../dashboard.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -21,6 +23,8 @@ class MyApp extends StatelessWidget {
 }
 
 class AbsensiPage extends StatefulWidget {
+  static var tag;
+
   @override
   _AbsensiPageState createState() => _AbsensiPageState();
 }
@@ -72,7 +76,6 @@ class _AbsensiPageState extends State<AbsensiPage>
     fontSize: 14.0,
   );
 
-  //DateTime now = DateTime.now();
   String get date {
     return DateFormat('EEEE d MMMM yyyy').format(DateTime.now());
   }
@@ -108,13 +111,19 @@ class _AbsensiPageState extends State<AbsensiPage>
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            child: Icon(
-                              Icons.keyboard_backspace,
-                              color: Colors.black,
+                            child: FlatButton(
+                              child: Icon(Icons.keyboard_backspace),
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (_) {
+                                    return Dashboard();
+                                  }),
+                                );
+                              },
                             ),
                           ),
+                          SizedBox(width: 45,),
                           Container(
-                            width: 320.0,
                             alignment: Alignment.center,
                             child: Text(
                               'Absensi',
@@ -186,6 +195,9 @@ class _AbsensiPageState extends State<AbsensiPage>
                             ),
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: 40,
                       ),
                       AnimatedBuilder(
                           animation: controller,

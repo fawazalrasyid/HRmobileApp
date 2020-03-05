@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ReportPage extends StatefulWidget {
   @override
@@ -39,6 +40,18 @@ class _ReportPageState extends State<ReportPage> {
     fontFamily: 'Montserrat',
     fontSize: 12.0,
   );
+
+  String get years {
+    return DateFormat('MMMM yyyy').format(DateTime.now());
+  }
+
+  String get day {
+    return DateFormat('EE').format(DateTime.now());
+  }
+
+  String get date {
+    return DateFormat('yMMMM').format(DateTime.now());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,28 +99,11 @@ class _ReportPageState extends State<ReportPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Text('Tahun 2020', style: text16bold),
+                        Text(years, style: text16bold),
                         SizedBox(
                           width: 16.0,
                         ),
-                        DropdownButton<String>(
-                          hint: Text(
-                            'Bulan',
-                            style: text14bold,
-                          ),
-                          items: <String>[
-                            'Januari',
-                            'Februari',
-                            'Maret ',
-                            'April'
-                          ].map((String value) {
-                            return new DropdownMenuItem<String>(
-                              value: value,
-                              child: new Text(value),
-                            );
-                          }).toList(),
-                          onChanged: (_) {},
-                        )
+                        buildDropdownMonth()
                       ],
                     ),
                     SizedBox(
@@ -132,8 +128,8 @@ class _ReportPageState extends State<ReportPage> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text('Senin', style: text14bold),
-                                    Text('22/02/2020', style: text12)
+                                    Text(day, style: text14bold),
+                                    Text(date, style: text12)
                                   ],
                                 ),
                                 Row(
@@ -249,6 +245,23 @@ class _ReportPageState extends State<ReportPage> {
           ),
         ),
       ),
+    );
+  }
+
+  DropdownButton<String> buildDropdownMonth() {
+    return DropdownButton<String>(
+      hint: Text(
+        'Bulan',
+        style: text14bold,
+      ),
+      items: <String>['Januari', 'Februari', 'Maret ', 'April', 'Mei', 'Juni', 'Juli']
+          .map((String value) {
+        return new DropdownMenuItem<String>(
+          value: value,
+          child: new Text(value),
+        );
+      }).toList(),
+      onChanged: (_) {},
     );
   }
 }

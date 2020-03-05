@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hr_app/dashboard.dart';
 
 class PermissionPage extends StatefulWidget {
+  static var tag;
+
   @override
   _PermissionPageState createState() => _PermissionPageState();
 }
@@ -76,13 +78,19 @@ class _PermissionPageState extends State<PermissionPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      child: Icon(
-                        Icons.keyboard_backspace,
-                        color: Colors.black,
+                      child: FlatButton(
+                        child: Icon(Icons.keyboard_backspace),
+                        onPressed: () {
+                           Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (_) {
+                              return Dashboard();
+                            }),
+                          );
+                        },
                       ),
                     ),
+                    SizedBox(width: 60),
                     Container(
-                      width: 320.0,
                       alignment: Alignment.center,
                       child: Text(
                         'Izin',

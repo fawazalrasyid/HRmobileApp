@@ -6,6 +6,8 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 class SickPage extends StatefulWidget {
+  static var tag;
+
   @override
   _SickPageState createState() => _SickPageState();
 }
@@ -88,13 +90,21 @@ class _SickPageState extends State<SickPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      child: Icon(
-                        Icons.keyboard_backspace,
-                        color: Colors.black,
+                      child: FlatButton(
+                        child: Icon(Icons.keyboard_backspace),
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (_) {
+                              return Dashboard();
+                            }),
+                          );
+                        },
                       ),
                     ),
+                    SizedBox(
+                      width: 55,
+                    ),
                     Container(
-                      width: 320.0,
                       alignment: Alignment.center,
                       child: Text(
                         'Sakit',
@@ -236,7 +246,7 @@ class _SickPageState extends State<SickPage> {
                               child: Stack(
                                 children: <Widget>[
                                   Container(
-                                    height: double.maxFinite,
+                                      height: double.maxFinite,
                                       width: double.maxFinite,
                                       decoration: BoxDecoration(
                                         color: Color(0xffffffff),
@@ -245,7 +255,10 @@ class _SickPageState extends State<SickPage> {
                                       ),
                                       child: image == null
                                           ? Text('')
-                                          : Image.file(image, fit: BoxFit.cover,)),
+                                          : Image.file(
+                                              image,
+                                              fit: BoxFit.cover,
+                                            )),
                                   Center(
                                     child: FlatButton(
                                         onPressed: getImage,
