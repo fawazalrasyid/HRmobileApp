@@ -116,26 +116,24 @@ class _AbsensiPageState extends State<AbsensiPage>
                       SizedBox(height: 42.0),
                       Stack(
                         children: <Widget>[
-                          Container(
-<<<<<<< HEAD:lib/menu/absensi_page.dart
-                            alignment: Alignment.centerLeft,
-                            child: Icon(
-                              Icons.keyboard_backspace,
-                              color: Colors.black,
-=======
-                            child: FlatButton(
-                              child: Icon(Icons.keyboard_backspace),
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (_) {
-                                    return Dashboard();
-                                  }),
-                                );
-                              },
->>>>>>> 0b2ee1efad37b5bfab08d5c246aab70ce0e2c2e1:lib/pages/absensi_page.dart
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        Dashboard()),
+                                ModalRoute.withName('/'),
+                              );
+                            },
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              child: Icon(
+                                Icons.keyboard_backspace,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
-                          SizedBox(width: 45,),
                           Container(
                             alignment: Alignment.center,
                             child: Text(
@@ -143,7 +141,7 @@ class _AbsensiPageState extends State<AbsensiPage>
                               textAlign: TextAlign.center,
                               style: text16bold,
                             ),
-                          )
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -210,13 +208,9 @@ class _AbsensiPageState extends State<AbsensiPage>
                           ),
                         ),
                       ),
-<<<<<<< HEAD:lib/menu/absensi_page.dart
-                      SizedBox(height: 32.0),
-=======
                       SizedBox(
                         height: 40,
                       ),
->>>>>>> 0b2ee1efad37b5bfab08d5c246aab70ce0e2c2e1:lib/pages/absensi_page.dart
                       AnimatedBuilder(
                           animation: controller,
                           builder: (context, child) {

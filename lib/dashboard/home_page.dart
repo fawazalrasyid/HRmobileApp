@@ -109,11 +109,10 @@ class _HomePage extends State<HomePage> {
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
                               onTap: () {
-                                Navigator.pushAndRemoveUntil(
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) => LeavePage()),
-                                  ModalRoute.withName('/'),
+                                      builder: (context) => LeavePage()),
                                 );
                               },
                               child: Center(
@@ -142,11 +141,10 @@ class _HomePage extends State<HomePage> {
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
                               onTap: () {
-                               Navigator.pushAndRemoveUntil(
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) => PermissionPage()),
-                                  ModalRoute.withName('/'),
+                                      builder: (context) => PermissionPage()),
                                 );
                               },
                               child: Center(
@@ -178,11 +176,10 @@ class _HomePage extends State<HomePage> {
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
                               onTap: () {
-                               Navigator.pushAndRemoveUntil(
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) => SickPage()),
-                                  ModalRoute.withName('/'),
+                                      builder: (context) => SickPage()),
                                 );
                               },
                               child: Center(
@@ -214,11 +211,10 @@ class _HomePage extends State<HomePage> {
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
                               onTap: () {
-                               Navigator.pushAndRemoveUntil(
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) => AbsensiPage()),
-                                  ModalRoute.withName('/'),
+                                      builder: (context) => AbsensiPage()),
                                 );
                               },
                               child: Center(
@@ -250,11 +246,10 @@ class _HomePage extends State<HomePage> {
                             margin: EdgeInsets.all(4.0),
                             child: InkWell(
                               onTap: () {
-                                Navigator.pushAndRemoveUntil(
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) => RemotePage()),
-                                  ModalRoute.withName('/'),
+                                      builder: (context) => RemotePage()),
                                 );
                               },
                               child: Center(

@@ -81,26 +81,23 @@ class _LeavePageState extends State<LeavePage> {
                 SizedBox(height: 32.0),
                 Stack(
                   children: <Widget>[
-                    Container(
-<<<<<<< HEAD:lib/menu/leave_page.dart
-                      alignment: Alignment.centerLeft,
-                      child: Icon(
-                        Icons.keyboard_backspace,
-                        color: Colors.black,
-=======
-                      child: FlatButton(
-                        child: Icon(Icons.keyboard_backspace),
-                        onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (_) {
-                              return Dashboard();
-                            }),
-                          );
-                        },
->>>>>>> 0b2ee1efad37b5bfab08d5c246aab70ce0e2c2e1:lib/pages/leave_page.dart
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Dashboard()),
+                          ModalRoute.withName('/'),
+                        );
+                      },
+                      child: Container(
+                        alignment: Alignment.centerLeft,
+                        child: Icon(
+                          Icons.keyboard_backspace,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
-                    SizedBox(width: 60,),
                     Container(
                       alignment: Alignment.center,
                       child: Text(
@@ -108,7 +105,7 @@ class _LeavePageState extends State<LeavePage> {
                         textAlign: TextAlign.center,
                         style: text16bold,
                       ),
-                    )
+                    ),
                   ],
                 ),
                 SizedBox(height: 32),

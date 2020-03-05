@@ -103,36 +103,7 @@ class _ReportPageState extends State<ReportPage> {
                         SizedBox(
                           width: 16.0,
                         ),
-<<<<<<< HEAD
-                        DropdownButton<String>(
-                          hint: Text(
-                            'Bulan',
-                            style: text14bold,
-                          ),
-                          items: <String>[
-                            'Januari',
-                            'Februari',
-                            'Maret ',
-                            'April',
-                            'Mei',
-                            'Juni',
-                            'Juli',
-                            'Agustus',
-                            'September',
-                            'Oktober',
-                            'November',
-                            'Desember'
-                          ].map((String value) {
-                            return new DropdownMenuItem<String>(
-                              value: value,
-                              child: new Text(value),
-                            );
-                          }).toList(),
-                          onChanged: (_) {},
-                        )
-=======
                         buildDropdownMonth()
->>>>>>> 0b2ee1efad37b5bfab08d5c246aab70ce0e2c2e1
                       ],
                     ),
                     SizedBox(
