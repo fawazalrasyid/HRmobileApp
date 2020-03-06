@@ -140,27 +140,7 @@ class _RemotePageState extends State<RemotePage> {
                                 style: text14,
                               ),
                               Container(
-                                  width: 44.0,
-                                  child: FlatButton(
-                                    child: Icon(
-                                      Icons.calendar_today,
-                                      color: Colors.black,
-                                    ),
-                                    onPressed: () {
-                                      showDatePicker(
-                                              context: context,
-                                              initialDate: _dateTimestar == null
-                                                  ? DateTime.now()
-                                                  : _dateTimestar,
-                                              firstDate: DateTime(2015),
-                                              lastDate: DateTime(2030))
-                                          .then((date) {
-                                        setState(() {
-                                          _dateTimestar = date;
-                                        });
-                                      });
-                                    },
-                                  ))
+                                  width: 44.0, child: buildCalendar(context))
                             ],
                           ),
                           Divider(height: 1.0, color: Colors.black)
@@ -186,27 +166,7 @@ class _RemotePageState extends State<RemotePage> {
                                 style: text14,
                               ),
                               Container(
-                                  width: 44.0,
-                                  child: FlatButton(
-                                    child: Icon(
-                                      Icons.calendar_today,
-                                      color: Colors.black,
-                                    ),
-                                    onPressed: () {
-                                      showDatePicker(
-                                              context: context,
-                                              initialDate: _dateTimeend == null
-                                                  ? _dateTimestar
-                                                  : _dateTimeend,
-                                              firstDate: DateTime(2015),
-                                              lastDate: DateTime(2030))
-                                          .then((date) {
-                                        setState(() {
-                                          _dateTimeend = date;
-                                        });
-                                      });
-                                    },
-                                  ))
+                                  width: 44.0, child: buildCalendar(context))
                             ],
                           ),
                           Divider(height: 1.0, color: Colors.black)
@@ -290,6 +250,29 @@ class _RemotePageState extends State<RemotePage> {
               ],
             )),
       ),
+    );
+  }
+
+// For build calendar button
+  FlatButton buildCalendar(BuildContext context) {
+    return FlatButton(
+      child: Icon(
+        Icons.calendar_today,
+        color: Colors.black,
+      ),
+      onPressed: () {
+        showDatePicker(
+                context: context,
+                initialDate:
+                    _dateTimestar == null ? DateTime.now() : _dateTimestar,
+                firstDate: DateTime(2015),
+                lastDate: DateTime(2030))
+            .then((date) {
+          setState(() {
+            _dateTimestar = date;
+          });
+        });
+      },
     );
   }
 }
