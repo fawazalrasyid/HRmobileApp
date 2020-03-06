@@ -46,83 +46,6 @@ class _ReportPageState extends State<ReportPage> {
   }
 
 
-  String get hour {
-    return DateFormat('jm').format(DateTime.now());
-  }
-
-// For display ItemList DropDown
-  DropdownButton<String> buildDropdownMonth() {
-    return DropdownButton<String>(
-      hint: Text(
-        'Bulan',
-        style: text14bold,
-      ),
-      items: <String>[
-        'Januari',
-        'Februari',
-        'Maret ',
-        'April',
-        'Mei',
-        'Juni',
-        'Juli',
-        'Agustus',
-        'September',
-        'October',
-        'November',
-        'Desember'
-      ].map((String value) {
-        return new DropdownMenuItem<String>(
-          value: value,
-          child: new Text(value),
-        );
-      }).toList(),
-      onChanged: (_) {},
-    );
-  }
-
-// For make List Report
-  Container listReport() {
-    return new Container(
-      padding: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        color: Color(0xffffffff),
-        borderRadius: BorderRadius.circular(15.00),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(day, style: text14bold),
-              Text(date, style: text12)
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Image.asset(
-                'assets/images/login.png',
-                height: 28.0,
-              ),
-              SizedBox(width: 8.0),
-              Text(hour, style: text14bold)
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Image.asset(
-                'assets/images/logout.png',
-                height: 28.0,
-              ),
-              SizedBox(width: 8.0),
-              Text('05.00pm', style: text14bold)
-            ],
-          )
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -186,7 +109,6 @@ class _ReportPageState extends State<ReportPage> {
                         physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.vertical,
                         children: <Widget>[
-<<<<<<< HEAD
                           new Container(
                             padding: EdgeInsets.all(8.0),
                             decoration: BoxDecoration(
@@ -226,15 +148,86 @@ class _ReportPageState extends State<ReportPage> {
                               ],
                             ),
                           ),
-=======
-                          listReport(),
                           Padding(padding: EdgeInsets.all(4.00)),
-                          listReport(),
->>>>>>> Membuat method
+                          new Container(
+                            padding: EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: Color(0xffffffff),
+                              borderRadius: BorderRadius.circular(15.00),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text('Senin', style: text14bold),
+                                    Text('22/02/2020', style: text12)
+                                  ],
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Image.asset(
+                                      'assets/images/login.png',
+                                      height: 28.0,
+                                    ),
+                                    SizedBox(width: 8.0),
+                                    Text('08.00am', style: text14bold)
+                                  ],
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Image.asset(
+                                      'assets/images/logout.png',
+                                      height: 28.0,
+                                    ),
+                                    SizedBox(width: 8.0),
+                                    Text('05.00pm', style: text14bold)
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
                           Padding(padding: EdgeInsets.all(4.00)),
-                          listReport(),
-                          Padding(padding: EdgeInsets.all(4.00)),
-                          listReport(),
+                          new Container(
+                            padding: EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: Color(0xffffffff),
+                              borderRadius: BorderRadius.circular(15.00),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text('Senin', style: text14bold),
+                                    Text('22/02/2020', style: text12)
+                                  ],
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Image.asset(
+                                      'assets/images/login.png',
+                                      height: 28.0,
+                                    ),
+                                    SizedBox(width: 8.0),
+                                    Text('08.00am', style: text14bold)
+                                  ],
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Image.asset(
+                                      'assets/images/logout.png',
+                                      height: 28.0,
+                                    ),
+                                    SizedBox(width: 8.0),
+                                    Text('05.00pm', style: text14bold)
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -245,6 +238,23 @@ class _ReportPageState extends State<ReportPage> {
           ),
         ),
       ),
+    );
+  }
+
+  DropdownButton<String> buildDropdownMonth() {
+    return DropdownButton<String>(
+      hint: Text(
+        'Bulan',
+        style: text14bold,
+      ),
+      items: <String>['Januari', 'Februari', 'Maret ', 'April', 'Mei', 'Juni', 'Juli']
+          .map((String value) {
+        return new DropdownMenuItem<String>(
+          value: value,
+          child: new Text(value),
+        );
+      }).toList(),
+      onChanged: (_) {},
     );
   }
 }
