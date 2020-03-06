@@ -87,9 +87,11 @@ class _HomePage extends State<HomePage> {
                             ],
                           ),
                         ),
-                        Image.asset(
-                          "assets/images/avatar.png",
-                          height: 50,
+                        ClipOval(
+                          child: Image.asset(
+                            'assets/images/avatar.png',
+                            height: 50.0,
+                          ),
                         ),
                       ],
                     ),

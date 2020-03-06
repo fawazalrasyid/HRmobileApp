@@ -132,7 +132,12 @@ class _ReportPageState extends State<ReportPage> {
         'April',
         'Mei',
         'Juni',
-        'Juli'
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
       ].map((String value) {
         return new DropdownMenuItem<String>(
           value: value,

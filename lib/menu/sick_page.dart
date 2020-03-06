@@ -4,6 +4,7 @@ import 'package:hr_app/dashboard.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SickPage extends StatefulWidget {
   static var tag;
@@ -283,11 +284,26 @@ class _SickPageState extends State<SickPage> {
                           minWidth: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                           onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (_) {
-                                return Dashboard();
-                              }),
-                            );
+                            Alert(
+                              context: context,
+                              type: AlertType.success,
+                              title: "Pengajuan Sedang Ditinjau",
+                              buttons: [
+                                DialogButton(
+                                    child: Text(
+                                      "Lanjutkan",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(builder: (_) {
+                                          return Dashboard();
+                                        }),
+                                      );
+                                    }),
+                              ],
+                            ).show();
                           },
                           child: Text(
                             'Ajukan Izin Sakit',

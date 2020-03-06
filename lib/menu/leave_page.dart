@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/dashboard.dart';
 import 'package:intl/intl.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LeavePage extends StatefulWidget {
   static var tag;
@@ -134,14 +135,24 @@ class _LeavePageState extends State<LeavePage> {
                         children: <Widget>[
                           Column(
                             children: <Widget>[
-                               Text("Kuota",style: text18bold, textAlign: TextAlign.center),
-                               Text("10", style: text16, textAlign: TextAlign.center,),
+                              Text("Kuota",
+                                  style: text18bold,
+                                  textAlign: TextAlign.center),
+                              Text(
+                                "10",
+                                style: text16bold,
+                                textAlign: TextAlign.center,
+                              ),
                             ],
                           ),
                           Column(
                             children: <Widget>[
-                              Text("Terpakai",style: text18bold, textAlign: TextAlign.center),
-                              Text("2", style: text16, textAlign: TextAlign.center),
+                              Text("Terpakai",
+                                  style: text18bold,
+                                  textAlign: TextAlign.center),
+                              Text("2",
+                                  style: text16bold,
+                                  textAlign: TextAlign.center),
                             ],
                           ),
                         ],
@@ -149,9 +160,7 @@ class _LeavePageState extends State<LeavePage> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 32.0,
-                ),
+                SizedBox(height: 32.0),
                 Container(
                   height: 530.00,
                   width: double.maxFinite,
@@ -300,11 +309,26 @@ class _LeavePageState extends State<LeavePage> {
                           minWidth: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                           onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (_) {
-                                return Dashboard();
-                              }),
-                            );
+                            Alert(
+                              context: context,
+                              type: AlertType.success,
+                              title: "Pengajuan Sedang Ditinjau",
+                              buttons: [
+                                DialogButton(
+                                    child: Text(
+                                      "Lanjutkan",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(builder: (_) {
+                                          return Dashboard();
+                                        }),
+                                      );
+                                    }),
+                              ],
+                            ).show();
                           },
                           child: Text(
                             'Ajukan Cuti',

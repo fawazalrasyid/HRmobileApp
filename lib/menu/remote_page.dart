@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/dashboard.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class RemotePage extends StatefulWidget {
   static var tag;
@@ -252,11 +253,26 @@ class _RemotePageState extends State<RemotePage> {
                           minWidth: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                           onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (_) {
-                                return Dashboard();
-                              }),
-                            );
+                            Alert(
+                              context: context,
+                              type: AlertType.success,
+                              title: "Pengajuan Sedang Ditinjau",
+                              buttons: [
+                                DialogButton(
+                                    child: Text(
+                                      "Lanjutkan",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(builder: (_) {
+                                          return Dashboard();
+                                        }),
+                                      );
+                                    }),
+                              ],
+                            ).show();
                           },
                           child: Text(
                             'Ajukan Remote',

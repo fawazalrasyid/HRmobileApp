@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/dashboard.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class PermissionPage extends StatefulWidget {
   static var tag;
@@ -185,28 +186,28 @@ class _PermissionPageState extends State<PermissionPage> {
                                 style: text14,
                               ),
                               Container(
-                                  width: 44.0,
-                                  child: FlatButton(
-                                    child: Icon(
-                                      Icons.calendar_today,
-                                      color: Colors.black,
-                                    ),
-                                    onPressed: () {
-                                      showDatePicker(
-                                              context: context,
-                                              initialDate: _dateTimeend == null
-                                                  ? _dateTimestar
-                                                  : _dateTimeend,
-                                              firstDate: DateTime(2015),
-                                              lastDate: DateTime(2030))
-                                          .then((date) {
-                                        setState(() {
-                                          _dateTimeend = date;
-                                        });
-                                      });
-                                    },
+                                width: 44.0,
+                                child: FlatButton(
+                                  child: Icon(
+                                    Icons.calendar_today,
+                                    color: Colors.black,
                                   ),
+                                  onPressed: () {
+                                    showDatePicker(
+                                            context: context,
+                                            initialDate: _dateTimeend == null
+                                                ? _dateTimestar
+                                                : _dateTimeend,
+                                            firstDate: DateTime(2015),
+                                            lastDate: DateTime(2030))
+                                        .then((date) {
+                                      setState(() {
+                                        _dateTimeend = date;
+                                      });
+                                    });
+                                  },
                                 ),
+                              ),
                             ],
                           ),
                           Divider(height: 1.0, color: Colors.black)
@@ -253,11 +254,27 @@ class _PermissionPageState extends State<PermissionPage> {
                           minWidth: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                           onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (_) {
-                                return Dashboard();
-                              }),
-                            );
+                            Alert(
+                              context: context,
+                              type: AlertType.success,
+                              title: "Pengajuan Sedang Ditinjau",
+                              //image: Image.asset("assets/success.png"),
+                              buttons: [
+                                DialogButton(
+                                    child: Text(
+                                      "Lanjutkan",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(builder: (_) {
+                                          return Dashboard();
+                                        }),
+                                      );
+                                    }),
+                              ],
+                            ).show();
                           },
                           child: Text(
                             'Ajukan Izin',

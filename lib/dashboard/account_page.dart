@@ -88,9 +88,11 @@ class _AccountPageState extends State<AccountPage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset(
-                      'assets/images/avatar.png',
-                      height: 100.0,
+                    ClipOval(
+                      child: Image.asset(
+                        'assets/images/avatar.png',
+                        height: 100.0,
+                      ),
                     ),
                     SizedBox(
                       height: 8.0,
