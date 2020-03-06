@@ -45,7 +45,6 @@ class _ReportPageState extends State<ReportPage> {
     return DateFormat('yyyy').format(DateTime.now());
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +75,6 @@ class _ReportPageState extends State<ReportPage> {
                 height: 32.0,
               ),
               Container(
-                height: 700.0,
                 decoration: BoxDecoration(
                   color: Color(0xfff4f4f4),
                   borderRadius: BorderRadius.only(
@@ -92,7 +90,7 @@ class _ReportPageState extends State<ReportPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Text('Tahun '+year, style: text16bold),
+                        Text('Tahun ' + year, style: text16bold),
                         SizedBox(
                           width: 16.0,
                         ),
@@ -103,133 +101,13 @@ class _ReportPageState extends State<ReportPage> {
                       height: 16.0,
                     ),
                     Container(
-                      height: 200.0,
-                      child: ListView(
-                        padding: EdgeInsets.all(8.0),
-                        physics: BouncingScrollPhysics(),
-                        scrollDirection: Axis.vertical,
-                        children: <Widget>[
-                          new Container(
-                            padding: EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(15.00),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text('Senin', style: text14bold),
-                                    Text('22/02/2020', style: text12)
-                                  ],
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    Image.asset(
-                                      'assets/images/login.png',
-                                      height: 28.0,
-                                    ),
-                                    SizedBox(width: 8.0),
-                                    Text('08.00am', style: text14bold)
-                                  ],
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    Image.asset(
-                                      'assets/images/logout.png',
-                                      height: 28.0,
-                                    ),
-                                    SizedBox(width: 8.0),
-                                    Text('05.00pm', style: text14bold)
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                          Padding(padding: EdgeInsets.all(4.00)),
-                          new Container(
-                            padding: EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(15.00),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text('Senin', style: text14bold),
-                                    Text('22/02/2020', style: text12)
-                                  ],
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    Image.asset(
-                                      'assets/images/login.png',
-                                      height: 28.0,
-                                    ),
-                                    SizedBox(width: 8.0),
-                                    Text('08.00am', style: text14bold)
-                                  ],
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    Image.asset(
-                                      'assets/images/logout.png',
-                                      height: 28.0,
-                                    ),
-                                    SizedBox(width: 8.0),
-                                    Text('05.00pm', style: text14bold)
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                          Padding(padding: EdgeInsets.all(4.00)),
-                          new Container(
-                            padding: EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(15.00),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text('Senin', style: text14bold),
-                                    Text('22/02/2020', style: text12)
-                                  ],
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    Image.asset(
-                                      'assets/images/login.png',
-                                      height: 28.0,
-                                    ),
-                                    SizedBox(width: 8.0),
-                                    Text('08.00am', style: text14bold)
-                                  ],
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    Image.asset(
-                                      'assets/images/logout.png',
-                                      height: 28.0,
-                                    ),
-                                    SizedBox(width: 8.0),
-                                    Text('05.00pm', style: text14bold)
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                      padding: EdgeInsets.all(8.0),
+                      child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: 20,
+                          shrinkWrap: true,
+                          itemBuilder: (BuildContext context, int index) =>
+                              listItem()),
                     ),
                   ],
                 ),
@@ -247,8 +125,15 @@ class _ReportPageState extends State<ReportPage> {
         'Bulan',
         style: text14bold,
       ),
-      items: <String>['Januari', 'Februari', 'Maret ', 'April', 'Mei', 'Juni', 'Juli']
-          .map((String value) {
+      items: <String>[
+        'Januari',
+        'Februari',
+        'Maret ',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli'
+      ].map((String value) {
         return new DropdownMenuItem<String>(
           value: value,
           child: new Text(value),
@@ -256,5 +141,47 @@ class _ReportPageState extends State<ReportPage> {
       }).toList(),
       onChanged: (_) {},
     );
+  }
+
+  Container listItem() {
+    return new Container(
+        margin: EdgeInsets.all(4.0),
+        padding: EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          color: Color(0xffffffff),
+          borderRadius: BorderRadius.circular(15.00),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('Senin', style: text14bold),
+                Text('22/02/2020', style: text12)
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Image.asset(
+                  'assets/images/login.png',
+                  height: 28.0,
+                ),
+                SizedBox(width: 8.0),
+                Text('08.00am', style: text14bold)
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Image.asset(
+                  'assets/images/logout.png',
+                  height: 28.0,
+                ),
+                SizedBox(width: 8.0),
+                Text('05.00pm', style: text14bold)
+              ],
+            )
+          ],
+        ));
   }
 }

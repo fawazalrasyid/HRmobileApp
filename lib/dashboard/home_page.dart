@@ -435,83 +435,37 @@ class _HomePage extends State<HomePage> {
                     ),
                     SizedBox(height: 16.0),
                     Container(
-                      height: 150.0,
-                      child: ListView(
-                        physics: BouncingScrollPhysics(),
-                        scrollDirection: Axis.vertical,
-                        children: <Widget>[
-                          Container(
-                            height: 42.00,
-                            child: Row(
-                              children: <Widget>[
-                                Image.asset('assets/images/dot.png',
-                                    color: Colors.grey, height: 16.0),
-                                SizedBox(width: 16.0),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      'Cuti tahunan',
-                                      style: text14bold,
-                                    ),
-                                    SizedBox(height: 2.0),
-                                    Text('13 Feb 2020 - 15 Feb 2020, Direview',
-                                        style: text14),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(padding: EdgeInsets.all(4.00)),
-                          Container(
-                            height: 42.00,
-                            child: Row(
-                              children: <Widget>[
-                                Image.asset('assets/images/dot.png',
-                                    color: Colors.red, height: 16.0),
-                                SizedBox(width: 16.0),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      'Cuti tahunan',
-                                      style: text14bold,
-                                    ),
-                                    SizedBox(height: 2.0),
-                                    Text('13 Feb 2020 - 15 Feb 2020, Ditolak',
-                                        style: text14),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(padding: EdgeInsets.all(4.00)),
-                          Container(
-                            height: 42.00,
-                            child: Row(
-                              children: <Widget>[
-                                Image.asset('assets/images/dot.png',
-                                    height: 16.0),
-                                SizedBox(width: 16.0),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      'Cuti tahunan',
-                                      style: text14bold,
-                                    ),
-                                    SizedBox(height: 2.0),
-                                    Text('13 Feb 2020 - 15 Feb 2020, Disetujui',
-                                        style: text14),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                      child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: 5,
+                          shrinkWrap: true,
+                          itemBuilder: (BuildContext context, int index) =>
+                              listItem()),
+                    )
                   ],
                 ))));
+  }
+
+  Container listItem() {
+    return new Container(
+        height: 42.00,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Image.asset('assets/images/dot.png', height: 16.0),
+            SizedBox(width: 16.0),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'Cuti tahunan',
+                  style: text14bold,
+                ),
+                SizedBox(height: 2.0),
+                Text('13 Feb 2020 - 15 Feb 2020, Direview', style: text14),
+              ],
+            ),
+          ],
+        ));
   }
 }
