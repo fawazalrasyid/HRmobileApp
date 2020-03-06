@@ -106,8 +106,7 @@ class _ReportPageState extends State<ReportPage> {
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: 20,
                           shrinkWrap: true,
-                          itemBuilder: (BuildContext context, int index) =>
-                              listItem()),
+                          itemBuilder: (BuildContext context, int index) => listItem()),
                     ),
                   ],
                 ),
