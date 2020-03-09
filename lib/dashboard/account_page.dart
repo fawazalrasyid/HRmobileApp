@@ -7,9 +7,10 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+  
   TextStyle textStyle = TextStyle(
     fontFamily: 'Montserrat',
-    fontSize: 16.0,
+    fontSize: 18.0,
     fontWeight: FontWeight.bold,
   );
 
@@ -52,6 +53,11 @@ class _AccountPageState extends State<AccountPage> {
   TextStyle text12 = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 12.0,
+  );
+
+  TextStyle text16 = TextStyle(
+    fontFamily: 'Montserrat',
+    fontSize: 16.0,
   );
 
   @override
@@ -98,10 +104,11 @@ class _AccountPageState extends State<AccountPage> {
                       height: 8.0,
                     ),
                     Text(
-                      'Fawaz Al Rasyid \nJunior Programmer',
-                      style: textStyle,
+                      'User',
+                      style: text16bold,
                       textAlign: TextAlign.center,
-                    )
+                    ),
+                    Text('Junior Programmer', style: text16,)
                   ],
                 ),
                 SizedBox(

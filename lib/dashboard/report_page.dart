@@ -106,7 +106,8 @@ class _ReportPageState extends State<ReportPage> {
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: 20,
                           shrinkWrap: true,
-                          itemBuilder: (BuildContext context, int index) => listItem()),
+                          itemBuilder: (BuildContext context, int index) =>
+                              listItem()),
                     ),
                   ],
                 ),
@@ -149,43 +150,44 @@ class _ReportPageState extends State<ReportPage> {
 
   Container listItem() {
     return new Container(
-        margin: EdgeInsets.all(4.0),
-        padding: EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          color: Color(0xffffffff),
-          borderRadius: BorderRadius.circular(15.00),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Senin', style: text14bold),
-                Text('22/02/2020', style: text12)
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Image.asset(
-                  'assets/images/login.png',
-                  height: 28.0,
-                ),
-                SizedBox(width: 8.0),
-                Text('08.00am', style: text14bold)
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Image.asset(
-                  'assets/images/logout.png',
-                  height: 28.0,
-                ),
-                SizedBox(width: 8.0),
-                Text('05.00pm', style: text14bold)
-              ],
-            )
-          ],
-        ));
+      margin: EdgeInsets.all(4.0),
+      padding: EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: Color(0xffffffff),
+        borderRadius: BorderRadius.circular(15.00),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text('Senin', style: text14bold),
+              Text('22/02/2020', style: text12)
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/login.png',
+                height: 28.0,
+              ),
+              SizedBox(width: 8.0),
+              Text('08.00am', style: text14bold)
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/logout.png',
+                height: 28.0,
+              ),
+              SizedBox(width: 8.0),
+              Text('05.00pm', style: text14bold)
+            ],
+          )
+        ],
+      ),
+    );
   }
 }
