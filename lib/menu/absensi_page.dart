@@ -263,7 +263,6 @@ class _AbsensiPageState extends State<AbsensiPage>
   }
 }
 
-
 class CustomTimerPainter extends CustomPainter {
   CustomTimerPainter({
     this.animation,
