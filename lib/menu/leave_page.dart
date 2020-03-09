@@ -95,6 +95,7 @@ class _LeavePageState extends State<LeavePage> {
                         alignment: Alignment.centerLeft,
                         child: Icon(
                           Icons.keyboard_backspace,
+                          size: 27.0,
                           color: Colors.black,
                         ),
                       ),

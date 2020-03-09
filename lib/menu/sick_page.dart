@@ -88,6 +88,7 @@ class _SickPageState extends State<SickPage> {
               children: <Widget>[
                 SizedBox(height: 32.0),
                 Stack(
+                  alignment: Alignment.center,
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
@@ -102,6 +103,7 @@ class _SickPageState extends State<SickPage> {
                         alignment: Alignment.centerLeft,
                         child: Icon(
                           Icons.keyboard_backspace,
+                          size: 27.0,
                           color: Colors.black,
                         ),
                       ),

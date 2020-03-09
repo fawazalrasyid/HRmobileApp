@@ -90,6 +90,7 @@ class _PermissionPageState extends State<PermissionPage> {
                         alignment: Alignment.centerLeft,
                         child: Icon(
                           Icons.keyboard_backspace,
+                          size: 27.0,
                           color: Colors.black,
                         ),
                       ),

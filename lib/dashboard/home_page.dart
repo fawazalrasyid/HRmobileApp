@@ -91,6 +91,8 @@ class _HomePage extends State<HomePage> {
                           child: Image.asset(
                             'assets/images/avatar.png',
                             height: 50.0,
+                            width: 50.0,
+                            fit: BoxFit.fill,
                           ),
                         ),
                       ],

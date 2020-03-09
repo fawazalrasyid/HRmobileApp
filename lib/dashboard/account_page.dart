@@ -7,7 +7,6 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
-  
   TextStyle textStyle = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 18.0,
@@ -98,6 +97,8 @@ class _AccountPageState extends State<AccountPage> {
                       child: Image.asset(
                         'assets/images/avatar.png',
                         height: 100.0,
+                        width: 100.0,
+                        fit: BoxFit.fill,
                       ),
                     ),
                     SizedBox(
@@ -108,89 +109,59 @@ class _AccountPageState extends State<AccountPage> {
                       style: text16bold,
                       textAlign: TextAlign.center,
                     ),
-                    Text('Junior Programmer', style: text16,)
+                    Text(
+                      'Junior Programmer',
+                      style: text16,
+                    )
                   ],
                 ),
                 SizedBox(
-                  height: 100.0,
+                  height: 50.0,
                 ),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    Text(
+                      "My info",
+                      style: text16bold,
+                    ),
+                    Padding(padding: EdgeInsets.all(16.0)),
                     Container(
-                        //height: 50.00,
-                        padding: EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                          color: Color(0xfff4f4f4),
-                          borderRadius: BorderRadius.circular(15.00),
-                        ),
-                        child: InkWell(
-                          // onTap: () {
-                          //   Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => EditAccountPage()),
-                          //   );
-                          // },
-                          child: Row(
-                            children: <Widget>[
-                              Image.asset('assets/images/account.png',
-                                  height: 28.0),
-                              SizedBox(
-                                width: 16.0,
-                              ),
-                              Text(
-                                'Edit Profile',
-                                style: text14bold,
-                              )
-                            ],
-                          ),
-                        )),
+                        child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text("Email", style: text14),
+                        SizedBox(height: 8.0),
+                        Text("oliver@gmail.com", style: text16bold),
+                        Divider(color: Colors.black)
+                      ],
+                    )),
                     Padding(padding: EdgeInsets.all(4.0)),
                     Container(
-                      //height: 50.00,
-                      padding: EdgeInsets.all(8.0),
-                      decoration: BoxDecoration(
-                        color: Color(0xfff4f4f4),
-                        borderRadius: BorderRadius.circular(15.00),
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Image.asset('assets/images/help.png', height: 28.0),
-                          SizedBox(
-                            width: 16.0,
-                          ),
-                          Text(
-                            'Edit Profile',
-                            style: text14bold,
-                          )
-                        ],
-                      ),
-                    ),
+                        child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text("Mobile phone", style: text14),
+                        SizedBox(height: 8.0),
+                        Text("+62 8389833838", style: text16bold),
+                        Divider(color: Colors.black)
+                      ],
+                    )),
                     Padding(padding: EdgeInsets.all(4.0)),
                     Container(
-                      //height: 50.00,
-                      padding: EdgeInsets.all(8.0),
-                      decoration: BoxDecoration(
-                        color: Color(0xfff4f4f4),
-                        borderRadius: BorderRadius.circular(15.00),
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Image.asset('assets/images/help.png', height: 28.0),
-                          SizedBox(
-                            width: 16.0,
-                          ),
-                          Text(
-                            'Help',
-                            style: text14bold,
-                          )
-                        ],
-                      ),
-                    ),
+                        child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text("Address", style: text14),
+                        SizedBox(height: 8.0),
+                        Text("Jl. Asia Afrika", style: text16bold),
+                        Divider(color: Colors.black)
+                      ],
+                    )),
                   ],
                 ),
                 SizedBox(
-                  height: 100.0,
+                  height: 50.0,
                 ),
                 Material(
                   elevation: 2.0,
