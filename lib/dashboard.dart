@@ -63,7 +63,7 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/profile_active.png',
               height: 25.0,
             ),
-            title: Text('Akun'),
+            title: Text('Account'),
           ),
         ],
         currentIndex: _selectedIndex,
