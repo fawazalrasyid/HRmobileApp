@@ -448,24 +448,25 @@ class _HomePage extends State<HomePage> {
 
   Container listActivityItem() {
     return new Container(
-        height: 42.00,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Image.asset('assets/images/dot.png', height: 16.0),
-            SizedBox(width: 16.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Cuti tahunan',
-                  style: text14bold,
-                ),
-                SizedBox(height: 2.0),
-                Text('13 Feb 2020 - 15 Feb 2020, Direview', style: text14),
-              ],
-            ),
-          ],
-        ));
+      height: 42.00,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Image.asset('assets/images/dot.png', height: 16.0),
+          SizedBox(width: 16.0),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Cuti tahunan',
+                style: text14bold,
+              ),
+              SizedBox(height: 2.0),
+              Text('13 Feb 2020 - 15 Feb 2020, Direview', style: text14),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
