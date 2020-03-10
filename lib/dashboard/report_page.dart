@@ -67,7 +67,7 @@ class _ReportPageState extends State<ReportPage> {
                 children: <Widget>[
                   Text(
                     'Report',
-                    style: text16bold,
+                    style: text18bold,
                   )
                 ],
               ),

@@ -76,7 +76,7 @@ class _HomePage extends State<HomePage> {
                               Text(
                                 "Users",
                                 textAlign: TextAlign.left,
-                                style: text16bold,
+                                style: text18bold,
                               ),
                               Text(
                                 'Junior Programmer',

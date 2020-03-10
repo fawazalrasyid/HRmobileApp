@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/pages/login_page.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class AccountPage extends StatefulWidget {
   @override
@@ -171,14 +172,36 @@ class _AccountPageState extends State<AccountPage> {
                     minWidth: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (_) {
-                          return LoginPage();
-                        }),
-                      );
+                      Alert(
+                        context: context,
+                        type: AlertType.warning,
+                        title: "Apakah anda yakin ingin logout?",
+                        buttons: [
+                          DialogButton(
+                              child: Text("Log Out",
+                                  style:
+                                      text18bold.copyWith(color: Colors.white)),
+                              onPressed: () {
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          LoginPage()),
+                                  ModalRoute.withName('/'),
+                                );
+                              },
+                              color: Color(0xffFF3030)),
+                          DialogButton(
+                              child: Text("Batal",
+                                  style:
+                                      text18bold.copyWith(color: Colors.white)),
+                              onPressed: () => Navigator.pop(context),
+                              color: Color(0xff1CCD9D))
+                        ],
+                      ).show();
                     },
                     child: Text(
-                      'Logout',
+                      'Log Out',
                       textAlign: TextAlign.center,
                       style: textwhiteStyle,
                     ),

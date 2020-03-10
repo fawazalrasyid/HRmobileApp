@@ -58,6 +58,7 @@ class _LeavePageState extends State<LeavePage> {
   DateTime _dateTimestar, _dateTimeend;
 
   final dateFormat = DateFormat('EEE, dd MMMM yyyy');
+  //final dateFormat = DateFormat.yMMMMd("in_ID");
 
   @override
   Widget build(BuildContext context) {
@@ -313,11 +314,9 @@ class _LeavePageState extends State<LeavePage> {
                               title: "Pengajuan Sedang Ditinjau",
                               buttons: [
                                 DialogButton(
-                                    child: Text(
-                                      "Lanjutkan",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    ),
+                                    child: Text("Lanjutkan",
+                                        style: text18bold.copyWith(
+                                            color: Colors.white)),
                                     onPressed: () {
                                       Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(builder: (_) {

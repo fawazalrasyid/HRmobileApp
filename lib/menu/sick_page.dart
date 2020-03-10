@@ -292,11 +292,9 @@ class _SickPageState extends State<SickPage> {
                               title: "Pengajuan Sedang Ditinjau",
                               buttons: [
                                 DialogButton(
-                                    child: Text(
-                                      "Lanjutkan",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    ),
+                                    child: Text("Lanjutkan",
+                                        style: text18bold.copyWith(
+                                            color: Colors.white)),
                                     onPressed: () {
                                       Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(builder: (_) {

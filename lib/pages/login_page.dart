@@ -65,7 +65,7 @@ class _LoginPage extends State<LoginPage> {
             }),
           );
         },
-        child: Text("Login",
+        child: Text("Log In",
             textAlign: TextAlign.center,
             style: style.copyWith(
                 color: Colors.white, fontWeight: FontWeight.bold)),
