@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/dashboard/dashboard.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class MyApp extends StatelessWidget {
   @override
@@ -17,13 +21,18 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPage extends State<LoginPage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+  bool _isLoading, _value1 = false;
 
-  bool _value1 = false;
   void _value1Changed(bool value) => setState(() => _value1 = value);
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = new TextEditingController();
+    final TextEditingController passwordController =
+        new TextEditingController();
+
     final emailField = TextField(
+      controller: emailController,
       obscureText: false,
       style: style,
       decoration: InputDecoration(
@@ -37,7 +46,9 @@ class _LoginPage extends State<LoginPage> {
             borderRadius: BorderRadius.circular(15)),
       ),
     );
+
     final passwordField = TextField(
+      controller: passwordController,
       obscureText: true,
       style: style,
       decoration: InputDecoration(
@@ -51,6 +62,7 @@ class _LoginPage extends State<LoginPage> {
             borderRadius: BorderRadius.circular(15)),
       ),
     );
+
     final loginButon = Material(
       elevation: 2.0,
       borderRadius: BorderRadius.circular(15.0),
@@ -59,13 +71,26 @@ class _LoginPage extends State<LoginPage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (_) {
-              return Dashboard();
-            }),
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
+            ModalRoute.withName('/'),
           );
         },
+<<<<<<< HEAD
         child: Text("Log In",
+=======
+        // onPressed:
+        //     emailController.text == "" || passwordController.text == ""
+        //     ? null
+        //     : () {
+        //         setState(() {
+        //           _isLoading = true;
+        //         });
+        //         signIn(emailController.text, passwordController.text);
+        //       },
+        child: Text("Login",
+>>>>>>> Membuat fungsi untuk get Data API dan membuat fungsi Login menggunakan Rest API
             textAlign: TextAlign.center,
             style: style.copyWith(
                 color: Colors.white, fontWeight: FontWeight.bold)),
@@ -123,5 +148,30 @@ class _LoginPage extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+// Fungsi login 
+  signIn(String email, pass) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    Map data = {'email': email, 'password': pass};
+    var jsonResponse;
+    var response = await http.post("URL API", body: data);
+    if (response.statusCode == 200) {
+      jsonResponse = json.decode(response.body);
+      if (jsonResponse != null) {
+        setState(() {
+          _isLoading = false;
+        });
+        sharedPreferences.setString("token", jsonResponse['token']);
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
+            (Route<dynamic> route) => false);
+      }
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+      print(response.body);
+    }
   }
 }

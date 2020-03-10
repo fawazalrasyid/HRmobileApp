@@ -63,9 +63,9 @@ class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xffFFFFFF),
-        body: SingleChildScrollView(
-            child: SafeArea(
+      backgroundColor: Color(0xffFFFFFF),
+      body: SingleChildScrollView(
+        child: SafeArea(
           top: true,
           bottom: true,
           left: true,
@@ -172,6 +172,7 @@ class _AccountPageState extends State<AccountPage> {
                     minWidth: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                     onPressed: () {
+<<<<<<< HEAD
                       Alert(
                         context: context,
                         type: AlertType.warning,
@@ -199,6 +200,15 @@ class _AccountPageState extends State<AccountPage> {
                               color: Color(0xff1CCD9D))
                         ],
                       ).show();
+=======
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (_) {
+                            return LoginPage();
+                          },
+                        ),
+                      );
+>>>>>>> Membuat fungsi untuk get Data API dan membuat fungsi Login menggunakan Rest API
                     },
                     child: Text(
                       'Log Out',
@@ -213,6 +223,8 @@ class _AccountPageState extends State<AccountPage> {
               ],
             ),
           ),
-        )));
+        ),
+      ),
+    );
   }
 }
