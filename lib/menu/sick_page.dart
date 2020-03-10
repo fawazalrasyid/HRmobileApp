@@ -88,7 +88,6 @@ class _SickPageState extends State<SickPage> {
               children: <Widget>[
                 SizedBox(height: 32.0),
                 Stack(
-                  alignment: Alignment.center,
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
@@ -103,7 +102,6 @@ class _SickPageState extends State<SickPage> {
                         alignment: Alignment.centerLeft,
                         child: Icon(
                           Icons.keyboard_backspace,
-                          size: 27.0,
                           color: Colors.black,
                         ),
                       ),
@@ -154,7 +152,27 @@ class _SickPageState extends State<SickPage> {
                                 style: text14,
                               ),
                               Container(
-                                  width: 44.0, child: buildCalendar(context))
+                                  width: 44.0,
+                                  child: FlatButton(
+                                    child: Icon(
+                                      Icons.calendar_today,
+                                      color: Colors.black,
+                                    ),
+                                    onPressed: () {
+                                      showDatePicker(
+                                              context: context,
+                                              initialDate: _dateTimestar == null
+                                                  ? DateTime.now()
+                                                  : _dateTimestar,
+                                              firstDate: DateTime(2015),
+                                              lastDate: DateTime(2030))
+                                          .then((date) {
+                                        setState(() {
+                                          _dateTimestar = date;
+                                        });
+                                      });
+                                    },
+                                  ))
                             ],
                           ),
                           Divider(height: 1.0, color: Colors.black)
@@ -180,7 +198,27 @@ class _SickPageState extends State<SickPage> {
                                 style: text14,
                               ),
                               Container(
-                                  width: 44.0, child: buildCalendar(context))
+                                  width: 44.0,
+                                  child: FlatButton(
+                                    child: Icon(
+                                      Icons.calendar_today,
+                                      color: Colors.black,
+                                    ),
+                                    onPressed: () {
+                                      showDatePicker(
+                                              context: context,
+                                              initialDate: _dateTimeend == null
+                                                  ? _dateTimestar
+                                                  : _dateTimeend,
+                                              firstDate: DateTime(2020),
+                                              lastDate: DateTime(2030))
+                                          .then((date) {
+                                        setState(() {
+                                          _dateTimeend = date;
+                                        });
+                                      });
+                                    },
+                                  ))
                             ],
                           ),
                           Divider(height: 1.0, color: Colors.black)
@@ -283,29 +321,6 @@ class _SickPageState extends State<SickPage> {
               ],
             )),
       ),
-    );
-  }
-
-// For build calendar button
-  FlatButton buildCalendar(BuildContext context) {
-    return FlatButton(
-      child: Icon(
-        Icons.calendar_today,
-        color: Colors.black,
-      ),
-      onPressed: () {
-        showDatePicker(
-                context: context,
-                initialDate:
-                    _dateTimestar == null ? DateTime.now() : _dateTimestar,
-                firstDate: DateTime(2015),
-                lastDate: DateTime(2030))
-            .then((date) {
-          setState(() {
-            _dateTimestar = date;
-          });
-        });
-      },
     );
   }
 }

@@ -95,7 +95,6 @@ class _LeavePageState extends State<LeavePage> {
                         alignment: Alignment.centerLeft,
                         child: Icon(
                           Icons.keyboard_backspace,
-                          size: 27.0,
                           color: Colors.black,
                         ),
                       ),
@@ -197,7 +196,27 @@ class _LeavePageState extends State<LeavePage> {
                                 style: text14,
                               ),
                               Container(
-                                  width: 44.0, child: buildCalendar(context)),
+                                  width: 44.0,
+                                  child: FlatButton(
+                                    child: Icon(
+                                      Icons.calendar_today,
+                                      color: Colors.black,
+                                    ),
+                                    onPressed: () {
+                                      showDatePicker(
+                                              context: context,
+                                              initialDate: _dateTimestar == null
+                                                  ? DateTime.now()
+                                                  : _dateTimestar,
+                                              firstDate: DateTime(2015),
+                                              lastDate: DateTime(2030))
+                                          .then((date) {
+                                        setState(() {
+                                          _dateTimestar = date;
+                                        });
+                                      });
+                                    },
+                                  ))
                             ],
                           ),
                           Divider(height: 1.0, color: Colors.black)
@@ -223,7 +242,27 @@ class _LeavePageState extends State<LeavePage> {
                                 style: text14,
                               ),
                               Container(
-                                  width: 44.0, child: buildCalendar(context)),
+                                  width: 44.0,
+                                  child: FlatButton(
+                                    child: Icon(
+                                      Icons.calendar_today,
+                                      color: Colors.black,
+                                    ),
+                                    onPressed: () {
+                                      showDatePicker(
+                                              context: context,
+                                              initialDate: _dateTimeend == null
+                                                  ? _dateTimestar
+                                                  : _dateTimeend,
+                                              firstDate: DateTime(2015),
+                                              lastDate: DateTime(2030))
+                                          .then((date) {
+                                        setState(() {
+                                          _dateTimeend = date;
+                                        });
+                                      });
+                                    },
+                                  ))
                             ],
                           ),
                           Divider(height: 1.0, color: Colors.black)
@@ -242,7 +281,21 @@ class _LeavePageState extends State<LeavePage> {
                           SizedBox(
                             height: 16.0,
                           ),
-                          buildTextField()
+                          TextField(
+                            maxLines: 6,
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(8.0),
+                              hintText: "Alasan...",
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xFF707070)),
+                                  borderRadius: BorderRadius.circular(10)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xFF707070)),
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                          )
                         ],
                       ),
                       SizedBox(
@@ -293,71 +346,6 @@ class _LeavePageState extends State<LeavePage> {
               ],
             )),
       ),
-    );
-  }
-
-// For button ajukan cuti
-  Material buildAjukanCuti(BuildContext context) {
-    return Material(
-      elevation: 2.0,
-      borderRadius: BorderRadius.circular(15.0),
-      color: Color(0xffFF3030),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (_) {
-              return Dashboard();
-            }),
-          );
-        },
-        child: Text(
-          'Ajukan Cuti',
-          textAlign: TextAlign.center,
-          style: textwhiteStyle,
-        ),
-      ),
-    );
-  }
-
-// Build text field
-  TextField buildTextField() {
-    return TextField(
-      maxLines: 6,
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.all(8.0),
-        hintText: "Alasan...",
-        enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFF707070)),
-            borderRadius: BorderRadius.circular(10)),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFF707070)),
-            borderRadius: BorderRadius.circular(10)),
-      ),
-    );
-  }
-
-// For build calendar button
-  FlatButton buildCalendar(BuildContext context) {
-    return FlatButton(
-      child: Icon(
-        Icons.calendar_today,
-        color: Colors.black,
-      ),
-      onPressed: () {
-        showDatePicker(
-                context: context,
-                initialDate:
-                    _dateTimestar == null ? DateTime.now() : _dateTimestar,
-                firstDate: DateTime(2015),
-                lastDate: DateTime(2030))
-            .then((date) {
-          setState(() {
-            _dateTimestar = date;
-          });
-        });
-      },
     );
   }
 }

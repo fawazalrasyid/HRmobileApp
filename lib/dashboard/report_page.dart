@@ -107,7 +107,7 @@ class _ReportPageState extends State<ReportPage> {
                           itemCount: 20,
                           shrinkWrap: true,
                           itemBuilder: (BuildContext context, int index) =>
-                              listItem()),
+                              listReportItem()),
                     ),
                   ],
                 ),
@@ -148,7 +148,7 @@ class _ReportPageState extends State<ReportPage> {
     );
   }
 
-  Container listItem() {
+  Container listReportItem() {
     return new Container(
       margin: EdgeInsets.all(4.0),
       padding: EdgeInsets.all(8.0),

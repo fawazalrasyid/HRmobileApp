@@ -214,7 +214,6 @@ class _AbsensiPageState extends State<AbsensiPage>
                     children: <Widget>[
                       SizedBox(height: 42.0),
                       Stack(
-                        alignment: Alignment.center,
                         children: <Widget>[
                           GestureDetector(
                             onTap: () {
@@ -230,11 +229,10 @@ class _AbsensiPageState extends State<AbsensiPage>
                               alignment: Alignment.centerLeft,
                               child: Icon(
                                 Icons.keyboard_backspace,
-                                size: 27.0,
                                 color: Colors.black,
                               ),
                             ),
-                          ),   
+                          ),
                           Container(
                             alignment: Alignment.center,
                             child: Text(

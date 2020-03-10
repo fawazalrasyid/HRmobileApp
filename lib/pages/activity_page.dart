@@ -112,7 +112,7 @@ class _ActivityPageState extends State<ActivityPage> {
                       itemCount: 20,
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) =>
-                          listItem()),
+                          listActivityItem()),
                 )
               ],
             ),
@@ -120,7 +120,7 @@ class _ActivityPageState extends State<ActivityPage> {
         )));
   }
 
-  Container listItem() {
+  Container listActivityItem() {
     return new Container(
         height: 42.00,
         child: Row(

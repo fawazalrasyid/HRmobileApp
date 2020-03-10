@@ -8,8 +8,6 @@ import 'package:hr_app/menu/sick_page.dart';
 import 'package:hr_app/pages/activity_page.dart';
 
 class HomePage extends StatefulWidget {
-  static var tag;
-
   @override
   _HomePage createState() => _HomePage();
 }
@@ -320,7 +318,7 @@ class _HomePage extends State<HomePage> {
                                     height: 16.0,
                                   ),
                                   Text(
-                                    '10hari',
+                                    '10 hari',
                                     style: text22bold,
                                   ),
                                   Text(
@@ -354,7 +352,7 @@ class _HomePage extends State<HomePage> {
                                     height: 16.0,
                                   ),
                                   Text(
-                                    '10hari',
+                                    '10 hari',
                                     style: text22bold,
                                   ),
                                   Text(
@@ -388,7 +386,7 @@ class _HomePage extends State<HomePage> {
                                     height: 16.0,
                                   ),
                                   Text(
-                                    '10hari',
+                                    '10 hari',
                                     style: text22bold,
                                   ),
                                   Text(
@@ -442,13 +440,13 @@ class _HomePage extends State<HomePage> {
                           itemCount: 5,
                           shrinkWrap: true,
                           itemBuilder: (BuildContext context, int index) =>
-                              listItem()),
+                              listActivityItem()),
                     )
                   ],
                 ))));
   }
 
-  Container listItem() {
+  Container listActivityItem() {
     return new Container(
         height: 42.00,
         child: Row(
