@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/dashboard.dart';
+import 'package:intl/intl.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class PermissionPage extends StatefulWidget {
@@ -57,6 +58,8 @@ class _PermissionPageState extends State<PermissionPage> {
   );
 
   DateTime _dateTimestar, _dateTimeend;
+
+  final dateFormat = DateFormat('EEE, dd MMMM yyyy');
 
   @override
   Widget build(BuildContext context) {
@@ -136,17 +139,18 @@ class _PermissionPageState extends State<PermissionPage> {
                               Text(
                                 _dateTimestar == null
                                     ? ''
-                                    : _dateTimestar.toString(),
+                                    : dateFormat.format(_dateTimestar),
                                 style: text14,
                               ),
                               Container(
-                                  width: 44.0,
-                                  child: FlatButton(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: GestureDetector(
                                     child: Icon(
                                       Icons.calendar_today,
+                                      size: 27.0,
                                       color: Colors.black,
                                     ),
-                                    onPressed: () {
+                                    onTap: () {
                                       showDatePicker(
                                               context: context,
                                               initialDate: _dateTimestar == null
@@ -182,17 +186,18 @@ class _PermissionPageState extends State<PermissionPage> {
                               Text(
                                 _dateTimeend == null
                                     ? ''
-                                    : _dateTimeend.toString(),
+                                    : dateFormat.format(_dateTimeend),
                                 style: text14,
                               ),
                               Container(
-                                width: 44.0,
-                                child: FlatButton(
+                                padding: EdgeInsets.all(8.0),
+                                child: GestureDetector(
                                   child: Icon(
                                     Icons.calendar_today,
+                                    size: 27.0,
                                     color: Colors.black,
                                   ),
-                                  onPressed: () {
+                                  onTap: () {
                                     showDatePicker(
                                             context: context,
                                             initialDate: _dateTimeend == null
