@@ -4,8 +4,6 @@ import 'package:hr_app/dashboard/dashboard.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class RemotePage extends StatefulWidget {
-  static var tag;
-
   @override
   _RemotePageState createState() => _RemotePageState();
 }

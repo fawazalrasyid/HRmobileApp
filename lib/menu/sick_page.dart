@@ -7,8 +7,6 @@ import 'package:intl/intl.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SickPage extends StatefulWidget {
-  static var tag;
-
   @override
   _SickPageState createState() => _SickPageState();
 }
@@ -201,7 +199,7 @@ class _SickPageState extends State<SickPage> {
                                 style: text14,
                               ),
                               Container(
-                                padding: EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: GestureDetector(
                                     child: Icon(
                                       Icons.calendar_today,
