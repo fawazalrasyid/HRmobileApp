@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../dashboard.dart';
+import 'package:hr_app/dashboard/dashboard.dart';
 
 class ActivityPage extends StatefulWidget {
   @override

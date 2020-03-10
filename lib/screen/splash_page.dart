@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_app/login_page.dart';
+import 'package:hr_app/pages/login_page.dart';
 import 'dart:async';
 
 void main() {

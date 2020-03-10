@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_app/dashboard.dart';
+import 'package:hr_app/dashboard/dashboard.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class RemotePage extends StatefulWidget {
