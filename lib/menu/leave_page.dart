@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LeavePage extends StatefulWidget {
-  static var tag;
 
   @override
   _LeavePageState createState() => _LeavePageState();
