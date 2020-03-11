@@ -73,7 +73,6 @@ class _HomePage extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-<<<<<<< HEAD
                         Container(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -90,16 +89,6 @@ class _HomePage extends State<HomePage> {
                               ),
                             ],
                           ),
-=======
-                        Text(
-                          "Users",
-                          textAlign: TextAlign.left,
-                          style: text16bold,
->>>>>>> Membuat fungsi untuk get Data API dan membuat fungsi Login menggunakan Rest API
-                        ),
-                        Text(
-                          'Junior Programmer',
-                          style: text16,
                         ),
                       ],
                     ),

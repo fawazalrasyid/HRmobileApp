@@ -77,9 +77,6 @@ class _LoginPage extends State<LoginPage> {
             ModalRoute.withName('/'),
           );
         },
-<<<<<<< HEAD
-        child: Text("Log In",
-=======
         // onPressed:
         //     emailController.text == "" || passwordController.text == ""
         //     ? null
@@ -89,8 +86,7 @@ class _LoginPage extends State<LoginPage> {
         //         });
         //         signIn(emailController.text, passwordController.text);
         //       },
-        child: Text("Login",
->>>>>>> Membuat fungsi untuk get Data API dan membuat fungsi Login menggunakan Rest API
+        child: Text("Log In",
             textAlign: TextAlign.center,
             style: style.copyWith(
                 color: Colors.white, fontWeight: FontWeight.bold)),
@@ -150,7 +146,7 @@ class _LoginPage extends State<LoginPage> {
     );
   }
 
-// Fungsi login 
+// Fungsi login
   signIn(String email, pass) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     Map data = {'email': email, 'password': pass};

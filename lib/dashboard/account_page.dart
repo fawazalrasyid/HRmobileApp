@@ -172,7 +172,6 @@ class _AccountPageState extends State<AccountPage> {
                     minWidth: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                     onPressed: () {
-<<<<<<< HEAD
                       Alert(
                         context: context,
                         type: AlertType.warning,
@@ -181,7 +180,7 @@ class _AccountPageState extends State<AccountPage> {
                           DialogButton(
                               child: Text("Log Out",
                                   style:
-                                      text18bold.copyWith(color: Colors.white)),
+                                      text16bold.copyWith(color: Colors.white)),
                               onPressed: () {
                                 Navigator.pushAndRemoveUntil(
                                   context,
@@ -195,20 +194,11 @@ class _AccountPageState extends State<AccountPage> {
                           DialogButton(
                               child: Text("Batal",
                                   style:
-                                      text18bold.copyWith(color: Colors.white)),
+                                      text16bold.copyWith(color: Colors.white)),
                               onPressed: () => Navigator.pop(context),
                               color: Color(0xff1CCD9D))
                         ],
                       ).show();
-=======
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (_) {
-                            return LoginPage();
-                          },
-                        ),
-                      );
->>>>>>> Membuat fungsi untuk get Data API dan membuat fungsi Login menggunakan Rest API
                     },
                     child: Text(
                       'Log Out',
