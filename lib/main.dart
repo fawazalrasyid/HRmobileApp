@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hr_app/screen/splash_page.dart';
 
+
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     //systemNavigationBarColor: Colors.white,
@@ -20,4 +21,5 @@ void main() {
       primaryColorDark: Color(0xffc30006),
     ),
   ));
+  
 }

@@ -6,7 +6,6 @@ import 'package:hr_app/dashboard/report_page.dart';
 
 class Dashboard extends StatefulWidget {
   static var tag;
-
   @override
   _DashboardState createState() => _DashboardState();
 }

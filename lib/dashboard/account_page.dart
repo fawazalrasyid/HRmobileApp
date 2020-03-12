@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/pages/login_page.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AccountPage extends StatefulWidget {
   @override
@@ -8,6 +9,35 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+  // var userData;
+  SharedPreferences sharedPreferences;
+
+
+  @override
+  void initState() {
+    super.initState();
+    checkLoginStatus();
+    // getDataUserInfo();
+  }
+
+  void checkLoginStatus() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    if (sharedPreferences.getString("token") == null) {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
+          (Route<dynamic> route) => false);
+    }
+  }
+
+  // void getDataUserInfo() async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   var userJson = sharedPreferences.get('user');
+  //   var user = json.decode(userJson);
+  //   setState(() {
+  //     userData  = user;
+  //   });
+  // }
+
   TextStyle textStyle = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 18.0,
@@ -131,9 +161,14 @@ class _AccountPageState extends State<AccountPage> {
                         child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text("Email", style: text14),
+                        Text(
+                          "Email",
+                        style: text14),
                         SizedBox(height: 8.0),
-                        Text("oliver@gmail.com", style: text16bold),
+                        Text(
+                          "oliver@gmail.com", 
+                          // userData != null ? '${userData['email']}' : 'Data not found', /* Function get data user email */
+                        style: text16bold),
                         Divider(color: Colors.black)
                       ],
                     )),
@@ -144,7 +179,10 @@ class _AccountPageState extends State<AccountPage> {
                       children: <Widget>[
                         Text("Mobile phone", style: text14),
                         SizedBox(height: 8.0),
-                        Text("+62 8389833838", style: text16bold),
+                        Text(
+                          "+62 8389833838", 
+                          // userData != null ? '${userData['phone']}' : 'Data not found', /* Function get data user phone */
+                          style: text16bold),
                         Divider(color: Colors.black)
                       ],
                     )),
@@ -155,7 +193,10 @@ class _AccountPageState extends State<AccountPage> {
                       children: <Widget>[
                         Text("Address", style: text14),
                         SizedBox(height: 8.0),
-                        Text("Jl. Asia Afrika", style: text16bold),
+                        Text(
+                          "Jl. Asia Afrika", 
+                          // userData != null ? '${userData['address']}' : 'Data not found', /* Function get data user address */
+                          style: text16bold),
                         Divider(color: Colors.black)
                       ],
                     )),
@@ -182,13 +223,13 @@ class _AccountPageState extends State<AccountPage> {
                                   style:
                                       text16bold.copyWith(color: Colors.white)),
                               onPressed: () {
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          LoginPage()),
-                                  ModalRoute.withName('/'),
-                                );
+                                sharedPreferences.clear();
+                                sharedPreferences.commit();
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            LoginPage()),
+                                    (Route<dynamic> route) => true);
                               },
                               color: Color(0xffFF3030)),
                           DialogButton(

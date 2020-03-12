@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
+  
   TextStyle text22bold = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 22.0,

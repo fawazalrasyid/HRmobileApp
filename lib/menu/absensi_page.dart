@@ -2,7 +2,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:hr_app/dashboard/dashboard.dart';
 
 void main() => runApp(MyApp());
 

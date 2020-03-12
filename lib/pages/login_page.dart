@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_app/api/get/get_data_user.dart';
 import 'package:hr_app/dashboard/dashboard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,19 +22,19 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPage extends State<LoginPage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-  bool _isLoading, _value1 = false;
+  bool _value1 = false;
+  bool isLoading;
+  User user;
 
   void _value1Changed(bool value) => setState(() => _value1 = value);
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailController = new TextEditingController();
-    final TextEditingController passwordController =
-        new TextEditingController();
-
     final emailField = TextField(
       controller: emailController,
-      obscureText: false,
+      cursorColor: Colors.black,
       style: style,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -49,6 +50,7 @@ class _LoginPage extends State<LoginPage> {
 
     final passwordField = TextField(
       controller: passwordController,
+      cursorColor: Colors.black,
       obscureText: true,
       style: style,
       decoration: InputDecoration(
@@ -70,22 +72,15 @@ class _LoginPage extends State<LoginPage> {
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
-            ModalRoute.withName('/'),
-          );
-        },
-        // onPressed:
-        //     emailController.text == "" || passwordController.text == ""
-        //     ? null
-        //     : () {
-        //         setState(() {
-        //           _isLoading = true;
-        //         });
-        //         signIn(emailController.text, passwordController.text);
-        //       },
+        onPressed:
+            emailController.text == "" || passwordController.text == ""
+            ? null
+            : () {
+                setState(() {
+                  isLoading = true;
+                });
+                signIn(emailController.text, passwordController.text);
+              },
         child: Text("Log In",
             textAlign: TextAlign.center,
             style: style.copyWith(
@@ -121,6 +116,7 @@ class _LoginPage extends State<LoginPage> {
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 16.0),
+                // textSection(),
                 emailField,
                 SizedBox(height: 16.0),
                 passwordField,
@@ -147,25 +143,27 @@ class _LoginPage extends State<LoginPage> {
   }
 
 // Fungsi login
-  signIn(String email, pass) async {
+  signIn(String email, password) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    Map data = {'email': email, 'password': pass};
+    Map data = {'email': email, 'password': password};  
     var jsonResponse;
-    var response = await http.post("URL API", body: data);
+    var response = await http.post("https://reqres.in/api/login", body: data);
     if (response.statusCode == 200) {
       jsonResponse = json.decode(response.body);
       if (jsonResponse != null) {
         setState(() {
-          _isLoading = false;
+          isLoading = false;
         });
         sharedPreferences.setString("token", jsonResponse['token']);
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
             (Route<dynamic> route) => false);
       }
+    } else if(response.statusCode == 400){
+      return AlertDialog(title: Text("Login Failed"),);
     } else {
       setState(() {
-        _isLoading = false;
+        isLoading = false;
       });
       print(response.body);
     }
