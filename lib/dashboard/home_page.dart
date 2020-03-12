@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:hr_app/itemListview/activityList.dart';
 import 'package:hr_app/menu/absensi_page.dart';
 import 'package:hr_app/menu/leave_page.dart';
 import 'package:hr_app/menu/permission_page.dart';
@@ -441,14 +442,7 @@ class _HomePage extends State<HomePage> {
                 ],
               ),
               SizedBox(height: 16.0),
-              Container(
-                child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: 5,
-                    shrinkWrap: true,
-                    itemBuilder: (BuildContext context, int index) =>
-                        listActivityItem()),
-              )
+              JobsListView()
             ],
           ),
         ),

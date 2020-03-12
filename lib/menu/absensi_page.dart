@@ -217,13 +217,7 @@ class _AbsensiPageState extends State<AbsensiPage>
                         children: <Widget>[
                           GestureDetector(
                             onTap: () {
-                              Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        Dashboard()),
-                                ModalRoute.withName('/'),
-                              );
+                              Navigator.pop(context);
                             },
                             child: Container(
                               alignment: Alignment.centerLeft,

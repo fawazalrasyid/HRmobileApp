@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:hr_app/dashboard/dashboard.dart';
+import 'package:hr_app/itemListview/activityList.dart';
 
 class ActivityPage extends StatefulWidget {
   @override
@@ -71,7 +71,6 @@ class _ActivityPageState extends State<ActivityPage> {
           ),
           child: SafeArea(
             child: Column(
-              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 SizedBox(
                   height: 32.0,
@@ -80,12 +79,7 @@ class _ActivityPageState extends State<ActivityPage> {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => Dashboard()),
-                          ModalRoute.withName('/'),
-                        );
+                        Navigator.pop(context);
                       },
                       child: Container(
                         alignment: Alignment.centerLeft,
@@ -106,14 +100,7 @@ class _ActivityPageState extends State<ActivityPage> {
                   ],
                 ),
                 SizedBox(height: 32.0),
-                Container(
-                  child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: 20,
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) =>
-                          listActivityItem()),
-                )
+                JobsListView()
               ],
             ),
           ),
