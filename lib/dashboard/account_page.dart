@@ -12,7 +12,6 @@ class _AccountPageState extends State<AccountPage> {
   // var userData;
   SharedPreferences sharedPreferences;
 
-
   @override
   void initState() {
     super.initState();
@@ -161,14 +160,11 @@ class _AccountPageState extends State<AccountPage> {
                         child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(
-                          "Email",
-                        style: text14),
+                        Text("Email", style: text14),
                         SizedBox(height: 8.0),
-                        Text(
-                          "oliver@gmail.com", 
-                          // userData != null ? '${userData['email']}' : 'Data not found', /* Function get data user email */
-                        style: text16bold),
+                        Text("oliver@gmail.com",
+                            // userData != null ? '${userData['email']}' : 'Data not found', /* Function get data user email */
+                            style: text16bold),
                         Divider(color: Colors.black)
                       ],
                     )),
@@ -179,10 +175,9 @@ class _AccountPageState extends State<AccountPage> {
                       children: <Widget>[
                         Text("Mobile phone", style: text14),
                         SizedBox(height: 8.0),
-                        Text(
-                          "+62 8389833838", 
-                          // userData != null ? '${userData['phone']}' : 'Data not found', /* Function get data user phone */
-                          style: text16bold),
+                        Text("+62 8389833838",
+                            // userData != null ? '${userData['phone']}' : 'Data not found', /* Function get data user phone */
+                            style: text16bold),
                         Divider(color: Colors.black)
                       ],
                     )),
@@ -193,10 +188,9 @@ class _AccountPageState extends State<AccountPage> {
                       children: <Widget>[
                         Text("Address", style: text14),
                         SizedBox(height: 8.0),
-                        Text(
-                          "Jl. Asia Afrika", 
-                          // userData != null ? '${userData['address']}' : 'Data not found', /* Function get data user address */
-                          style: text16bold),
+                        Text("Jl. Asia Afrika",
+                            // userData != null ? '${userData['address']}' : 'Data not found', /* Function get data user address */
+                            style: text16bold),
                         Divider(color: Colors.black)
                       ],
                     )),
@@ -225,7 +219,7 @@ class _AccountPageState extends State<AccountPage> {
                               onPressed: () {
                                 sharedPreferences.clear();
                                 sharedPreferences.commit();
-                                Navigator.of(context).pushAndRemoveUntil(
+                                Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
                                             LoginPage()),
