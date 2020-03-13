@@ -219,7 +219,7 @@ class _AccountPageState extends State<AccountPage> {
                               onPressed: () {
                                 sharedPreferences.clear();
                                 sharedPreferences.commit();
-                                Navigator.of(context).pushReplacement(
+                                Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
                                             LoginPage()),
