@@ -7,6 +7,7 @@ import 'package:hr_app/menu/permission_page.dart';
 import 'package:hr_app/menu/remote_page.dart';
 import 'package:hr_app/menu/sick_page.dart';
 import 'package:hr_app/pages/activity_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,6 +15,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
+  String name = '';
+
+  Future _cekName() async {
+    SharedPreferences pref  = await SharedPreferences.getInstance();
+    if(pref.getString("email") != null){
+      setState(() {
+        name = pref.getString("email");
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _cekName();
+  }
   
   TextStyle text22bold = TextStyle(
     fontFamily: 'Montserrat',
@@ -49,6 +66,7 @@ class _HomePage extends State<HomePage> {
     fontSize: 14.0,
   );
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,12 +99,12 @@ class _HomePage extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "Users",
+                                name,
                                 textAlign: TextAlign.left,
                                 style: text18bold,
                               ),
                               Text(
-                                'Junior Programmer',
+                                name,
                                 style: text16,
                               ),
                             ],

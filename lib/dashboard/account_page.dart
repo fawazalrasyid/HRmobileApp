@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:hr_app/pages/login_page.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class AccountPage extends StatefulWidget {
   @override
@@ -9,16 +12,9 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
-  // var userData;
   SharedPreferences sharedPreferences;
-
-  @override
-  void initState() {
-    super.initState();
-    checkLoginStatus();
-    // getDataUserInfo();
-  }
-
+  String email = '';
+  
   void checkLoginStatus() async {
     sharedPreferences = await SharedPreferences.getInstance();
     if (sharedPreferences.getString("token") == null) {
@@ -28,14 +24,22 @@ class _AccountPageState extends State<AccountPage> {
     }
   }
 
-  // void getDataUserInfo() async {
-  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  //   var userJson = sharedPreferences.get('user');
-  //   var user = json.decode(userJson);
-  //   setState(() {
-  //     userData  = user;
-  //   });
-  // }
+ Future _cekEmail() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if(pref.getString("email") != null) {
+      setState(() {
+        email = pref.getString("email");
+      });
+    }
+ }
+
+  @override
+  void initState() {
+    super.initState();
+    checkLoginStatus();
+    _cekEmail();
+  }
+
 
   TextStyle textStyle = TextStyle(
     fontFamily: 'Montserrat',
@@ -135,7 +139,7 @@ class _AccountPageState extends State<AccountPage> {
                       height: 8.0,
                     ),
                     Text(
-                      'User',
+                      "User",
                       style: text16bold,
                       textAlign: TextAlign.center,
                     ),
@@ -145,7 +149,7 @@ class _AccountPageState extends State<AccountPage> {
                     )
                   ],
                 ),
-                SizedBox(
+                SizedBox( 
                   height: 50.0,
                 ),
                 Column(
@@ -162,8 +166,8 @@ class _AccountPageState extends State<AccountPage> {
                       children: <Widget>[
                         Text("Email", style: text14),
                         SizedBox(height: 8.0),
-                        Text("oliver@gmail.com",
-                            // userData != null ? '${userData['email']}' : 'Data not found', /* Function get data user email */
+                        Text(
+                            email,
                             style: text16bold),
                         Divider(color: Colors.black)
                       ],
@@ -217,13 +221,7 @@ class _AccountPageState extends State<AccountPage> {
                                   style:
                                       text16bold.copyWith(color: Colors.white)),
                               onPressed: () {
-                                sharedPreferences.clear();
-                                sharedPreferences.commit();
-                                Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            LoginPage()),
-                                    (Route<dynamic> route) => true);
+                    signOut();
                               },
                               color: Color(0xffFF3030)),
                           DialogButton(
@@ -251,5 +249,20 @@ class _AccountPageState extends State<AccountPage> {
         ),
       ),
     );
+  }
+
+// Sign Out
+  signOut() async {
+    var res = await http.get("https://reqres.in/api/login");
+    var body = json.decode(res.body);
+    if(body['token'] == null) {
+      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+      sharedPreferences.remove('email');
+      sharedPreferences.remove('password');
+      sharedPreferences.remove('token');
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
+          (Route<dynamic> route) => false);
+    }
   }
 }
