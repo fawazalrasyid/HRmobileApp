@@ -62,7 +62,6 @@ class JobsListView extends StatelessWidget {
   Future<List<Job>> _fetchJobs() async {
     final jobsListAPIUrl = 'https://hrroketinnn.000webhostapp.com/';
     final response = await http.get(jobsListAPIUrl);
-
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
       return jsonResponse.map((job) => new Job.fromJson(job)).toList();

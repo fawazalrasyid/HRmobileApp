@@ -3,31 +3,25 @@ import 'package:http/http.dart' as http;
 
 class User {
   String id;
-  String image;
+  String email;
   String firstName;
   String lastName;
-  // String status;
-  String email;
-  // String phone;
-  // String address;
+  String avatar;
 
-  User({this.id, this.image, this.firstName, this.lastName, /*this.status*/ this.email, /*this.phone*/ /*this.address*/});
+  User({this.id, this.email, this.firstName, this.lastName, this.avatar});
 
   factory User.createUser(Map<String, dynamic> object) {
     return User (
       id: object['id'].toString(),
-      image: object['image'],
-      firstName: object['firstName'],
-      lastName: object['lastName'],
-      // status: object['status'],
       email: object['email'],
-      // phone: object['phone'],
-      // address: object['address']
+      firstName: object['first_name'],
+      lastName: object['last_name'],
+      avatar: object['avatar']
     );
   }
 
   static Future<User> connectToAPI(String id) async {
-    String apiURL = "https://reqres.in/" + id;
+    String apiURL = "https://reqres.in/api/users/2";
     
     var apiResult = await http.get(apiURL);
     var jsonObject = json.decode(apiResult.body);

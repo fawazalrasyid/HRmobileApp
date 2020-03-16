@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hr_app/itemListview/activityList.dart';
@@ -7,6 +9,7 @@ import 'package:hr_app/menu/permission_page.dart';
 import 'package:hr_app/menu/remote_page.dart';
 import 'package:hr_app/menu/sick_page.dart';
 import 'package:hr_app/pages/activity_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,6 +17,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
+  String name = '';
+  String status = '';
+
+  Future _checkedName() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if (pref.getString("email") != null) {
+      setState(() {
+        name = pref.getString("email");
+      });
+    }
+  }
+
+  Future _checkedStatus() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if(pref.getString("token") != null){
+      status = pref.getString("token");
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _checkedName();
+    _checkedStatus();
+  }
+
   TextStyle text22bold = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 22.0,
@@ -80,12 +109,12 @@ class _HomePage extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "Users",
+                                name,
                                 textAlign: TextAlign.left,
                                 style: text18bold,
                               ),
                               Text(
-                                'Junior Programmer',
+                                 status,
                                 style: text16,
                               ),
                             ],

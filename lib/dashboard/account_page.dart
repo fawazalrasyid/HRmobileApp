@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:hr_app/pages/login_page.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class AccountPage extends StatefulWidget {
   @override
@@ -9,16 +12,11 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
-  // var userData;
   SharedPreferences sharedPreferences;
-
-  @override
-  void initState() {
-    super.initState();
-    checkLoginStatus();
-    // getDataUserInfo();
-  }
-
+  String email = '';
+  String name = '';
+  String status = '';
+  
   void checkLoginStatus() async {
     sharedPreferences = await SharedPreferences.getInstance();
     if (sharedPreferences.getString("token") == null) {
@@ -28,14 +26,42 @@ class _AccountPageState extends State<AccountPage> {
     }
   }
 
-  // void getDataUserInfo() async {
-  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  //   var userJson = sharedPreferences.get('user');
-  //   var user = json.decode(userJson);
-  //   setState(() {
-  //     userData  = user;
-  //   });
-  // }
+ Future _checkedEmail() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if(pref.getString("email") != null) {
+      setState(() {
+        email = pref.getString("email");
+      });
+    }
+ }
+
+  Future _checkedName() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if(pref.getString("email") != null) {
+      setState(() {
+        name = pref.getString("email");
+      });
+    }
+ }
+
+  Future _checkedStatus() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if(pref.getString("token") != null) {
+      setState(() {
+        status = pref.getString("token");
+      });
+    }
+ }
+
+  @override
+  void initState() {
+    super.initState();
+    checkLoginStatus();
+    _checkedEmail();
+    _checkedStatus();
+    _checkedName();
+  }
+
 
   TextStyle textStyle = TextStyle(
     fontFamily: 'Montserrat',
@@ -135,17 +161,17 @@ class _AccountPageState extends State<AccountPage> {
                       height: 8.0,
                     ),
                     Text(
-                      'User',
+                      name,
                       style: text16bold,
                       textAlign: TextAlign.center,
                     ),
                     Text(
-                      'Junior Programmer',
+                      status,
                       style: text16,
                     )
                   ],
                 ),
-                SizedBox(
+                SizedBox( 
                   height: 50.0,
                 ),
                 Column(
@@ -162,8 +188,8 @@ class _AccountPageState extends State<AccountPage> {
                       children: <Widget>[
                         Text("Email", style: text14),
                         SizedBox(height: 8.0),
-                        Text("oliver@gmail.com",
-                            // userData != null ? '${userData['email']}' : 'Data not found', /* Function get data user email */
+                        Text(
+                            email,
                             style: text16bold),
                         Divider(color: Colors.black)
                       ],
@@ -217,13 +243,7 @@ class _AccountPageState extends State<AccountPage> {
                                   style:
                                       text16bold.copyWith(color: Colors.white)),
                               onPressed: () {
-                                sharedPreferences.clear();
-                                sharedPreferences.commit();
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            LoginPage()),
-                                    (Route<dynamic> route) => true);
+                    signOut();
                               },
                               color: Color(0xffFF3030)),
                           DialogButton(
@@ -251,5 +271,20 @@ class _AccountPageState extends State<AccountPage> {
         ),
       ),
     );
+  }
+
+// Sign Out
+  signOut() async {
+    var res = await http.get("https://reqres.in/api/login");
+    var body = json.decode(res.body);
+    if(body['token'] == null) {
+      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+      sharedPreferences.remove('email');
+      sharedPreferences.remove('password');
+      sharedPreferences.remove('token');
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
+          (Route<dynamic> route) => false);
+    }
   }
 }

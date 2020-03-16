@@ -17,7 +17,7 @@ class Model {
   }
 
   static Future<Model> connectToAPI(
-      String startDate, String lastDate, String reason) async {
+    String startDate, String lastDate, String reason) async {
     String apiUrl = "URL API";
     var apiResult = await http.post(apiUrl,
         body: {"startDate": startDate, "lastDate": lastDate, "reason": reason});

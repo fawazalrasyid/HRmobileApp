@@ -143,13 +143,7 @@ class _LoginPageState extends State<LoginPage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          {
-            setState(() {
-              //pr.show();
-            });
-            signIn(emailController.text, passwordController.text);
-          }
-
+          signIn(email);
           _validateField();
         },
         child: Text("Log In",
@@ -176,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
   String validatePass(String value) {
     if (value.length == 0) {
       return "Masukkan password";
-    }else if (value.length < 8) {
+    } else if (value.length < 8) {
       return "Password minimal 8 karakter";
     }
     return null;
@@ -199,10 +193,12 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-// Fungsi login
-  signIn(String email, password) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    Map data = {'email': email, 'password': password};
+  // Fungsi login
+  signIn(String text) async {
+    final data = {
+      'email': emailController.text,
+      'password': passwordController.text
+    };
     var jsonResponse;
     var response = await http.post("https://reqres.in/api/login", body: data);
     if (response.statusCode == 200) {
@@ -213,11 +209,18 @@ class _LoginPageState extends State<LoginPage> {
           Toast.show("Selamat datang", context,
               duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
         });
-        sharedPreferences.setString("token", jsonResponse['token']);
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
-            (Route<dynamic> route) => false);
+
+        User.connectToAPI("2").then((value) {
+          user = value;
+          setState(() {});
+        });
       }
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      pref.setString("token", jsonResponse['token']);
+      pref.setString("email", emailController.value.text);
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
+          (Route<dynamic> route) => false);
     } else if (response.statusCode == 400) {
       setState(() {
         pr.hide();
@@ -226,8 +229,42 @@ class _LoginPageState extends State<LoginPage> {
       });
     } else {
       setState(() {
-        pr.hide();
+        isLoading = false;
       });
+      print(response.body);
     }
   }
 }
+
+// // Fungsi login
+//   signIn(String email, password) async {
+//     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+//     Map data = {'email': email, 'password': password};
+//     var jsonResponse;
+//     var response = await http.post("https://reqres.in/api/login", body: data);
+//     if (response.statusCode == 200) {
+//       jsonResponse = json.decode(response.body);
+//       if (jsonResponse != null) {
+//         setState(() {
+//           pr.hide();
+//           Toast.show("Selamat datang", context,
+//               duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+//         });
+//         sharedPreferences.setString("token", jsonResponse['token']);
+//         Navigator.of(context).pushAndRemoveUntil(
+//             MaterialPageRoute(builder: (BuildContext context) => Dashboard()),
+//             (Route<dynamic> route) => false);
+//       }
+//     } else if (response.statusCode == 400) {
+//       setState(() {
+//         pr.hide();
+//         Toast.show("Email atau password salah", context,
+//             duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+//       });
+//     } else {
+//       setState(() {
+//         pr.hide();
+//       });
+//     }
+//   }
+// }
