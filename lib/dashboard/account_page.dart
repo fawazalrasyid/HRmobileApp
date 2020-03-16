@@ -14,6 +14,8 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   SharedPreferences sharedPreferences;
   String email = '';
+  String name = '';
+  String status = '';
   
   void checkLoginStatus() async {
     sharedPreferences = await SharedPreferences.getInstance();
@@ -24,7 +26,7 @@ class _AccountPageState extends State<AccountPage> {
     }
   }
 
- Future _cekEmail() async{
+ Future _checkedEmail() async{
     SharedPreferences pref = await SharedPreferences.getInstance();
     if(pref.getString("email") != null) {
       setState(() {
@@ -33,11 +35,31 @@ class _AccountPageState extends State<AccountPage> {
     }
  }
 
+  Future _checkedName() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if(pref.getString("email") != null) {
+      setState(() {
+        name = pref.getString("email");
+      });
+    }
+ }
+
+  Future _checkedStatus() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if(pref.getString("token") != null) {
+      setState(() {
+        status = pref.getString("token");
+      });
+    }
+ }
+
   @override
   void initState() {
     super.initState();
     checkLoginStatus();
-    _cekEmail();
+    _checkedEmail();
+    _checkedStatus();
+    _checkedName();
   }
 
 
@@ -139,12 +161,12 @@ class _AccountPageState extends State<AccountPage> {
                       height: 8.0,
                     ),
                     Text(
-                      "User",
+                      name,
                       style: text16bold,
                       textAlign: TextAlign.center,
                     ),
                     Text(
-                      'Junior Programmer',
+                      status,
                       style: text16,
                     )
                   ],

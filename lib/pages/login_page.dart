@@ -155,8 +155,13 @@ class _LoginPage extends State<LoginPage> {
         setState(() {
           isLoading = false;
         });
+
+        User.connectToAPI("2").then((value) {
+          user = value;
+          setState(() {});
+        });
       }
-       SharedPreferences pref = await SharedPreferences.getInstance();
+      SharedPreferences pref = await SharedPreferences.getInstance();
       pref.setString("token", jsonResponse['token']);
       pref.setString("email", emailController.value.text);
       Navigator.of(context).pushAndRemoveUntil(

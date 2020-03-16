@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hr_app/itemListview/activityList.dart';
@@ -16,22 +18,31 @@ class HomePage extends StatefulWidget {
 
 class _HomePage extends State<HomePage> {
   String name = '';
+  String status = '';
 
-  Future _cekName() async {
-    SharedPreferences pref  = await SharedPreferences.getInstance();
-    if(pref.getString("email") != null){
+  Future _checkedName() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if (pref.getString("email") != null) {
       setState(() {
         name = pref.getString("email");
       });
     }
   }
 
+  Future _checkedStatus() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if(pref.getString("token") != null){
+      status = pref.getString("token");
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    _cekName();
+    _checkedName();
+    _checkedStatus();
   }
-  
+
   TextStyle text22bold = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 22.0,
@@ -65,7 +76,6 @@ class _HomePage extends State<HomePage> {
     fontFamily: 'Montserrat',
     fontSize: 14.0,
   );
-
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +114,7 @@ class _HomePage extends State<HomePage> {
                                 style: text18bold,
                               ),
                               Text(
-                                name,
+                                 status,
                                 style: text16,
                               ),
                             ],

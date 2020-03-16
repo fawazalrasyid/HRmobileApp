@@ -4,18 +4,18 @@ import 'package:http/http.dart' as http;
 class User {
   String id;
   String email;
-  String first_name;
-  String last_name;
+  String firstName;
+  String lastName;
   String avatar;
 
-  User({this.id, this.email, this.first_name, this.last_name, this.avatar});
+  User({this.id, this.email, this.firstName, this.lastName, this.avatar});
 
   factory User.createUser(Map<String, dynamic> object) {
     return User (
       id: object['id'].toString(),
       email: object['email'],
-      first_name: object['first_name'],
-      last_name: object['last_name'],
+      firstName: object['first_name'],
+      lastName: object['last_name'],
       avatar: object['avatar']
     );
   }
