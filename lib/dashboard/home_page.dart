@@ -14,7 +14,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
-  
   TextStyle text22bold = TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 22.0,
@@ -443,7 +442,8 @@ class _HomePage extends State<HomePage> {
                 ],
               ),
               SizedBox(height: 16.0),
-              JobsListView()
+              JobsListView(),
+              SizedBox(height: 32.0),
             ],
           ),
         ),

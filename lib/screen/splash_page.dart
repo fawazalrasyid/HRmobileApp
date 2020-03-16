@@ -40,20 +40,22 @@ class _SplashScreen extends State<SplashScreen> {
     var duration = const Duration(seconds: 5);
     return Timer(duration, () {
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (BuildContext context) => isLoggedIn ? Dashboard() : LoginPage()),
+        MaterialPageRoute(
+            builder: (BuildContext context) =>
+                isLoggedIn ? Dashboard() : LoginPage()),
         ModalRoute.withName('/'),
       );
     });
   }
 
-  void checkIfLoggedIn() async{
-      SharedPreferences localStorage = await SharedPreferences.getInstance();
-      var token = localStorage.getString('token');
-      if(token != null){
-         setState(() {
-            isLoggedIn = true;
-         });
-      }
+  void checkIfLoggedIn() async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    var token = localStorage.getString('token');
+    if (token != null) {
+      setState(() {
+        isLoggedIn = true;
+      });
+    }
   }
 
   @override

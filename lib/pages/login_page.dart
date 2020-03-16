@@ -37,56 +37,60 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       body: SingleChildScrollView(
-          child: SafeArea(
-        top: true,
-        left: true,
-        right: true,
-        minimum: const EdgeInsets.only(
-          left: 16.0,
-          right: 16.0,
+        child: SafeArea(
+          top: true,
+          left: true,
+          right: true,
+          minimum: const EdgeInsets.only(
+            left: 16.0,
+            right: 16.0,
+          ),
+          child: Container(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(height: 32.0),
+                  Container(
+                    height: 90.0,
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      "assets/roketin.png",
+                      height: 100.0,
+                    ),
+                  ),
+                  SizedBox(height: 16.0),
+                  Text(
+                    "Sign In",
+                    textAlign: TextAlign.left,
+                    style: style.copyWith(
+                        height: 3,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 32.0),
+                  Form(
+                    key: _key,
+                    autovalidate: _validate,
+                    child: formUI(),
+                  ),
+                  SizedBox(height: 8.0),
+                  CheckboxListTile(
+                    title: Text('Remember me'),
+                    value: _value1,
+                    onChanged: _value1Changed,
+                    activeColor: Color(0xffFF3030),
+                    controlAffinity: ListTileControlAffinity.leading,
+                  ),
+                  SizedBox(height: 16.0),
+                  buttonLogin(),
+                  SizedBox(height: 16.0),
+                  Center(child: Text("Forgot password?")),
+                  SizedBox(height: 32.0),
+                ]),
+          ),
         ),
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 32.0),
-              Container(
-                height: 90.0,
-                alignment: Alignment.center,
-                child: Image.asset(
-                  "assets/roketin.png",
-                  height: 100.0,
-                ),
-              ),
-              SizedBox(height: 16.0),
-              Text(
-                "Sign In",
-                textAlign: TextAlign.left,
-                style: style.copyWith(
-                    height: 3,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 32.0),
-              Form(
-                key: _key,
-                autovalidate: _validate,
-                child: formUI(),
-              ),
-              SizedBox(height: 8.0),
-              CheckboxListTile(
-                title: Text('Remember me'),
-                value: _value1,
-                onChanged: _value1Changed,
-                activeColor: Color(0xffFF3030),
-                controlAffinity: ListTileControlAffinity.leading,
-              ),
-              SizedBox(height: 16.0),
-              buttonLogin(),
-              SizedBox(height: 16.0),
-              Center(child: Text("Forgot password?")),
-              SizedBox(height: 32.0),
-            ]),
-      )),
+      ),
     );
   }
 
@@ -172,17 +176,20 @@ class _LoginPageState extends State<LoginPage> {
   String validatePass(String value) {
     if (value.length == 0) {
       return "Masukkan password";
+    }else if (value.length < 8) {
+      return "Password minimal 8 karakter";
     }
+    return null;
   }
 
 //validasi textfield
-  _validateField() {
+  _validateField() async {
     if (_key.currentState.validate()) {
       // No any error in validation
       _key.currentState.save();
       print("Email $email");
       print("Password $pass");
-      pr.show();
+      await pr.show();
     } else {
       // validation error
       setState(() {

@@ -88,6 +88,7 @@ flutter:
   - assets/images/login.png
   - assets/images/logout.png
   - assets/images/account.png
+  - assets/images/offline.png
 
   - assets/images/upload.png
   - assets/images/cancel.png

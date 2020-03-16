@@ -7,18 +7,18 @@ import 'package:http/http.dart' as http;
 
 class Job {
   final int id;
-  final String position;
-  final String company;
-  final String description;
+  final String category;
+  final String date;
+  final String progress;
 
-  Job({this.id, this.position, this.company, this.description});
+  Job({this.id, this.category, this.date, this.progress});
 
   factory Job.fromJson(Map<String, dynamic> json) {
     return Job(
-      id: json['id'],
-      position: json['position'],
-      company: json['company'],
-      description: json['description'],
+      //id: json['id'],
+      category: json['category'],
+      date: json['date'],
+      progress: json['progress'],
     );
   }
 }
@@ -44,7 +44,12 @@ class JobsListView extends StatelessWidget {
           List<Job> data = snapshot.data;
           return _jobsListView(data);
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Column(children: <Widget>[
+            Image.asset("assets/images/offline.png", height: 60.0),
+            Text("Tidak ada koneksi",
+                textAlign: TextAlign.start,
+                style: text14.copyWith(color: Color(0xffA1B1BD))),
+          ]);
         }
         return SpinKitThreeBounce(
           color: Color(0xffA1B1BD),
@@ -55,7 +60,7 @@ class JobsListView extends StatelessWidget {
   }
 
   Future<List<Job>> _fetchJobs() async {
-    final jobsListAPIUrl = 'https://mock-json-service.glitch.me/';
+    final jobsListAPIUrl = 'https://hrroketinnn.000webhostapp.com/';
     final response = await http.get(jobsListAPIUrl);
 
     if (response.statusCode == 200) {
@@ -72,11 +77,11 @@ class JobsListView extends StatelessWidget {
         shrinkWrap: true,
         itemCount: data.length,
         itemBuilder: (context, index) {
-          return _tile(data[index].position, data[index].company);
+          return _tile(data[index].category, data[index].date, data[index].progress);
         });
   }
 
-  Container _tile(String title, String subtitle) => Container(
+  Container _tile(String category, String date, String progress) => Container(
         height: 42.00,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -91,12 +96,12 @@ class JobsListView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  title,
+                  category,
                   style: text14bold,
                 ),
                 SizedBox(height: 2.0),
                 Text(
-                  subtitle,
+                  date + ", " + progress,
                   style: text14,
                 ),
               ],
